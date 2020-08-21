@@ -5,12 +5,14 @@ const PORT = process.env.PORT || 4000;
 const controllers = require('./controllers');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const mongoose = require('mongoose');
 const db = require('./models');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo')(session);;
+const connectDB = db.connectDB;
 
+connectDB();
 
+app.use(express.json({extended:false}))
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));

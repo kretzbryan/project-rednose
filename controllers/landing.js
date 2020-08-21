@@ -3,11 +3,11 @@ const mongo = require('mongodb')
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const db = require('../models');
-const { render } = require('ejs');
-const { replaceOne } = require('../models/Gig');
-const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
-const mongoose= require('mongoose')
+const mongoose= require('mongoose');
+const { JsonWebTokenError } = require('jsonwebtoken');
+const config = require('config');
+const jwt = require('jsonwebtoken');
 
 const mongoURI = 'mongodb://localhost:27017/circusnetwork';
 const conn = mongoose.createConnection(mongoURI);
@@ -52,23 +52,30 @@ router.get('/files', (req, res) => {
 
 // logs in user and creates cookie for logged user
 router.post('/login', async function(req, res){
+    const { username, password } = req.body;
     try {
-        users = await db.User.find({});
-        const foundUser = await db.User.findOne({username: req.body.username});
+
+        const foundUser = await db.User.findOne({username});
         if (!foundUser) {
 
             return res.send({message:'Password or email incorrect.'})
         }
-        const match = await bcrypt.compare(req.body.password, foundUser.password);
+        const match = await bcrypt.compare(password, foundUser.password);
         if (!match) {
             return res.send({message:'Password or email incorrect.'})
         }
-        req.session.currentUser = {
-            id: foundUser._id,
-            username: foundUser.username,
+        const payload = {
+            user: {
+                id: foundUser._id
+            }
         }
-        res.redirect('/home')
-
+        jwt.sign(payload, config.get('jwtSecret'),
+        {expiresIn: 36000 },
+        (err, token) => {
+            if(err) throw err;
+            console.log('login successful')
+            res.json({ token})
+        })
     } catch(err) {
         res.send({message: 'Internal Server Error'})
     }
