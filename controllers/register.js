@@ -3,12 +3,13 @@ const mongo = require('mongodb')
 const router = express.Router();
 const db = require('../models');
 const mongoose= require('mongoose')
+const bcrypt = require('bcryptjs');
 
 
 
 
 // Creates new user and redefines the password with a hash
-router.post('/register', async function(req,res){
+router.post('/', async function(req,res){
     try {
         const foundUser = await db.User.findOne({email: req.body.email});
         if (foundUser) {
@@ -20,7 +21,8 @@ router.post('/register', async function(req,res){
         const newUser = await db.User.create(req.body);
         res.redirect('/');
     } catch (err) {
-        console.log(err)
+        console.log(err),
+        res.redirect('/')
     }
 })
 

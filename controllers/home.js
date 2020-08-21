@@ -1,14 +1,9 @@
 const express = require('express');
-// const { patch } = require('./landing');
-const { render } = require('ejs');
 const router = express.Router();
 const path = require('path');
 const crypto = require('crypto');
-const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const db = require('../models');
-const upload = require('../middleware/upload');
 const mongo = require('mongodb')
 const mongoose = require('mongoose');
 
@@ -16,12 +11,7 @@ const mongoose = require('mongoose');
 const mongoURI = 'mongodb://localhost:27017/circusnetwork';
 const conn = mongoose.createConnection(mongoURI);
 
-let gfs;
 
-conn.once('open', () => {
-    gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection('profileImages');
-})
 
 
 
@@ -32,9 +22,12 @@ router.get('/', async (req, res) => {
             const currentUser = await db.User.findById(req.session.currentUser.id);
             const allPosts = await db.Post.find({}).populate('author');
             const allGigs = await db.Gig.find({}).populate('author');
-            res.render('home', { currentUser: currentUser, posts: allPosts, gigs: allGigs })
+            // res.status(200).json({gigs: allGigs, posts: allPosts})
+            res.status(200).json({ currentUser: currentUser, posts: allPosts, gigs: allGigs })
         } catch (err) {
-            console.log(err);
+            if(err) {
+                res.status(500).json({message: 'An error occurred. Please try again.'})
+            }
         }
         
     } else {
@@ -114,25 +107,7 @@ router.put('/edit-post/:id', (req, res) => {
     })
 })
 
-// Uploads profile image to Grid-Fs storage in mongodb
-router.put('/upload-profile-image', async function(req, res) {
-    try {
-        await upload(req, res);
-        const updatedUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, {
-            profileImage: {
-                filename: req.file.filename,
-                mimetype: req.file.mimetype
-            }
-        }) 
-        if (req.file === undefined) {
-            return res.send('Select a file');
-        }
-        res.redirect('/home')
-    } catch (err) {
-        console.log(err);
-        return res.send('Error when uploading.')
-    }
-})
+
 
 // Delete Gig
 router.delete('/delete-gig/:id', (req, res) => {
