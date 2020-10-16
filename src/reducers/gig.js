@@ -1,4 +1,4 @@
-import { ADD_GIG, GET_GIGS, GIG_ERROR, DELETE_GIG } from '../actions/types';
+import { ADD_GIG, GET_GIGS, GIG_ERROR, DELETE_GIG, EDIT_GIG } from '../actions/types';
 
 const initialState = {
     gigs: [],

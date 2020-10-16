@@ -5,14 +5,14 @@ import { auth } from '../../actions/auth';
 import { deletePost } from '../../actions/post'
 
 
-const PostFooter = ({ auth , deletePost , user, id}) => {
+const PostFooter = ({ auth , deletePost , user, id, toggleForm}) => {
     // console.log(auth.user)
     return (
     <div className='options__footer'>
             { !auth.loading && auth.user && user === auth.user._id && (
                 <Fragment>
                     <button className='anchor options' onClick={ (e) => deletePost(id) } type='button'><i className="fas fa-trash-alt"></i></button>
-                    <a className='anchor options' href="#" data-target="#edit<%= post._id %>PostModal" data-toggle="modal"><i className="fas fa-user-edit"></i></a>
+                    <button className='anchor options' onClick={toggleForm} ><i className="fas fa-user-edit"></i></button>
                 </Fragment> ) }
         </div>
 )}

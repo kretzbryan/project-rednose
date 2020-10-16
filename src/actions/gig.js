@@ -1,5 +1,5 @@
 import api from '../utils/api';
-import { ADD_GIG, GET_GIGS, GIG_ERROR, DELETE_GIG, DELETE_POST } from './types';
+import { ADD_GIG, GET_GIGS, GIG_ERROR, DELETE_GIG, EDIT_GIG, EDIT_POST } from './types';
 
 export const addGig = ({ title, location, text }) => async dispatch => {
     const config = {
@@ -51,5 +51,23 @@ export const deleteGig = id => async dispatch => {
         
     } catch (err) {
         
+    }
+}
+
+export const editGig = ({ title, location, text, user, _id }) => async dispatch => {
+    try {
+        const body = JSON.stringify({ title, location, text, user, _id });
+        const res = await api.put(`home/edit-gig/${_id}`, body)
+        
+        dispatch({
+            type: EDIT_POST,
+            payload: res.data
+        })
+
+    } catch (err) {
+        dispatch({
+            type: GIG_ERROR,
+            payload: err
+        })
     }
 }

@@ -1,23 +1,42 @@
-import React, { Fragment, useState, setState } from 'react';
-import { addPost } from '../../actions/post';
+import React, { Fragment, useState, setState, useEffect } from 'react';
+import { addPost, editPost } from '../../actions/post';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const PostForm = ({ toggleForm, addPost }) => {
-    const [ text, setText ] = useState([]);
+const PostForm = ({ toggleForm, addPost, post, editPost }) => {
+    const [ formData, setFormData ] = useState({
+        text: post.text || '',
+        name: post.name || '',
+        user: post.user || '',
+        id: post._id || null
+    });
 
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(!post) {
+        addPost(formData.text);
+        toggleForm();
+        } else {
+            editPost(formData);
+            toggleForm();
+        }
+    }
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
     
 
     return (
         <Fragment>
-            <form onSubmit= {e => {
-                e.preventDefault();
-                addPost(text);
-                toggleForm();
-            }}>
-                <textarea name="content" placeholder="Say whats on your mind..." value={text} cols="45" rows="7" onChange={e => setText(e.target.value)} required></textarea>
+            <form onSubmit= {handleSubmit}>
+                <textarea name="text" placeholder="Say whats on your mind..." value={formData.text} cols="45" rows="7" onChange={handleChange} required></textarea>
                 <footer className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-secondary" onClick={toggleForm} >Close</button>
                     <button type="submit" className="btn btn-primary">Confirm</button>
                 </footer>
             </form>
@@ -25,7 +44,6 @@ const PostForm = ({ toggleForm, addPost }) => {
     );
 };
 
-PostForm.propTypes ={
-    addPost: PropTypes.func.isRequired,
-}
-export default connect(null, { addPost })(PostForm);
+
+
+export default connect(null, { addPost, editPost })(PostForm);
