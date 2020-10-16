@@ -18,6 +18,7 @@ export const POST_ERROR = 'POST_ERROR';
 export const GET_POSTS = 'GET_POSTS';
 export const DELETE_POST = 'DELETE_POST';
 export const ADD_GIG = 'ADD_GIG';
+export const EDIT_GIG = 'EDIT_GIG';
 export const GIG_ERROR = 'GIG_ERROR';
 export const GET_GIGS = 'GET_GIGS';
 export const DELETE_GIG = 'DELETE_GIG';

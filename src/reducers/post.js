@@ -9,12 +9,22 @@ const initialState = {
 
 export default function( state = initialState, action) {
     const {type, payload} = action;
+    console.log(`${type}`, payload)
 
     switch(type) {
+        case EDIT_POST:
+            const updatedPost = state.posts.find(post => post._id === payload._id);
+            return {
+                ...state,
+                posts: [
+                    {...updatedPost, text: payload.text},
+                    ...state.posts.filter(post => post !== updatedPost)
+                ]
+            }
         case ADD_POST:
             return {
                 ...state,
-                posts: [...state.posts, payload],
+                posts: [payload, ...state.posts],
                 loading: false
             }
         case DELETE_POST:
