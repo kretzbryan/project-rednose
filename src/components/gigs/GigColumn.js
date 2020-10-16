@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GigCard from './GigCard';
 import { register } from '../forms/forms';
-import CreateGigContainer from '../gigs/CreateGigContainer';
+import AddGigContainer from '../gigs/AddGigContainer';
 import { connect } from 'react-redux';
 import { getGigs } from '../../actions/gig';
 import PropTypes from 'prop-types';
@@ -13,7 +13,7 @@ const GigColumn = ({ getGigs, gig: { gigs } }) => {
     }, [getGigs])
     return (
     <div className='gig__column'>
-        <CreateGigContainer />
+        <AddGigContainer />
         { gigs.map( gig => (
             <GigCard key={gig._id} gig={gig} />
         ))}

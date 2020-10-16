@@ -1,5 +1,5 @@
 import api from '../utils/api';
-import { ADD_POST, REMOVE_POST, EDIT_POST, POST_ERROR, GET_POSTS, DELETE_POST } from './types';
+import { ADD_POST, REMOVE_POST, EDIT_POST, POST_ERROR, GET_POST, GET_POSTS, DELETE_POST } from './types';
 
 export const addPost = (text) => async dispatch => {
     const config = {
@@ -46,6 +46,24 @@ export const deletePost = id => async dispatch => {
             type: DELETE_POST,
             payload: id
         })
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: err
+        })
+    }
+}
+
+export const getCurrentPost = ( id ) => async dispatch => {
+    try {
+
+        const res = await api.get(`posts/${id}`)
+
+        dispatch({
+            type: GET_POST,
+            payload: res.data
+        })
+        
     } catch (err) {
         dispatch({
             type: POST_ERROR,

@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import GigHeader from './GigHeader';
 import GigDescription from './GigDescription';
 import GigOptions from './GigOptions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import EditGigForm from '../forms/EditGigForm';
 
-const GigCard = ({ auth, gig: { title, location, text, _id, user } }) => (
-    <div className="row card gig__container">
-        <GigHeader title={title} location={location}/>
-        <GigDescription text={text} />
-        { auth.isAuthenticated && !auth.loading && auth.user._id === user &&  (<GigOptions />)}
-    </div>
-)
+const GigCard = ({ auth, gig }) => {
+    const [ formOpen, setFormOpen ] = useState(false);
+    const { title, location, text, user } = gig
+    const { isAuthenticated, loading } = auth
+ 
+    const toggleForm = () => {
+        setFormOpen(!formOpen)
+    }
+
+
+    return (
+        <div className="row card gig__container">
+            { !formOpen ? (
+                <Fragment>
+                    <GigHeader title={title} location={location}/>
+                    <GigDescription text={text} />
+                    { isAuthenticated && !loading && auth.user._id === user &&  (<GigOptions toggleForm={ toggleForm } />)}
+                </Fragment>
+            ) : (
+                <EditGigForm gig={ gig } toggleForm={ toggleForm } />
+            )}
+        </div>
+    )
+}
 
 GigCard.propTypes = {
     auth: PropTypes.object.isRequired

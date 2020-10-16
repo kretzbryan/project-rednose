@@ -1,26 +1,30 @@
-import React, { Fragment, useState, setState, useEffect } from 'react';
-import { addPost, editPost } from '../../actions/post';
-import { connect } from 'react-redux';
+import React, { useEffect, useState, Fragment } from 'react'
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { editPost } from '../../actions/post';
 
-const PostForm = ({ toggleForm, addPost, post, editPost }) => {
+
+const EditPostForm = ({ editPost, toggleForm, post: { text, name, user, _id } }) => {
     const [ formData, setFormData ] = useState({
-        text: post.text || '',
-        name: post.name || '',
-        user: post.user || '',
-        id: post._id || null
+        text: '',
+        name:  '',
+        user:  '',
+        id: ''
     });
 
+    useEffect(() => {
+        setFormData({
+            text: text,
+            name:  name,
+            user:  user,
+            id: _id
+        })
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!post) {
-        addPost(formData.text);
-        toggleForm();
-        } else {
             editPost(formData);
             toggleForm();
-        }
     }
 
     const handleChange = (e) => {
@@ -42,8 +46,11 @@ const PostForm = ({ toggleForm, addPost, post, editPost }) => {
             </form>
         </Fragment>
     );
-};
+}
+
+EditPostForm.propTypes = {
+    editPost: PropTypes.func.isRequired
+}
 
 
-
-export default connect(null, { addPost, editPost })(PostForm);
+export default connect(null, { editPost })(EditPostForm)
