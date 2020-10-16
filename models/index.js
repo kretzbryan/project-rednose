@@ -1,21 +1,27 @@
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost:27017/circusnetwork';
+const config = require('config');
+const db = config.get('mongoURI');
 
-mongoose.connect(process.env.MONGODB_URI || connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-})
-.then(() => {
-    console.log('MongoDB Connected!');
-})
-.catch(err => {
-    console.log(err);
-})
+const connectDB = async () => {
+    try{
+        await mongoose.connect(db, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true
+        });
 
-module.exports = {
+        console.log('mongodb connected!!')
+    } catch {
+        console.log(err.message);
+        // exit process with failure
+        process.exit(1);
+    }
+}
+
+
+module.exports = module.exports = {
     Gig: require('./Gig'),
     Post: require('./Post'),
-    User: require('./User')
+    User: require('./User'),
+    connectDB: connectDB
 }
