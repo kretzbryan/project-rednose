@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import auth from '../../actions/auth';
 import post from '../../actions/post';
-import PostForm from '../forms/PostForm';
+import EditPostForm from '../forms/EditPostForm';
 
 
 
@@ -20,11 +20,15 @@ const PostContainer = ({post}) => {
 
     return (
         <div>
-    { !formOpen ? (<div className="row card post__container">
-        <PostHeader name={name}  />
-        <PostContent text={text} />
-        <PostFooter id={_id} user={user} toggleForm={toggleForm}/>
-    </div>) : (<PostForm post={post} toggleForm={toggleForm} />) }
+    { !formOpen ? (
+        <div className="row card post__container">
+            <PostHeader name={name}  />
+            <PostContent text={text} />
+            <PostFooter id={_id} user={user} toggleForm={toggleForm}/>
+        </div>) : ( <div className="row card post__container">
+                        <PostHeader name={name}  />
+                        <EditPostForm post={post} toggleForm={toggleForm} />
+                    </div>) }
     </div>
 )}
 

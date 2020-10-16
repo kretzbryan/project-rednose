@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PostForm from '../forms/PostForm';
+import AddPostForm from '../forms/AddPostForm';
 import image from '../../../public/images/default.png';
 
 
@@ -17,7 +17,7 @@ const CreatePostContainer = () => {
         <a onClick={toggleForm} data-toggle="modal" data-target="#addPostModal" className='create__post__caption anchor'>
             <p className='options'>Say Something!</p>
         </a>
-        { formOpen === true && <PostForm toggleForm={ toggleForm }/> }
+        { formOpen === true && <AddPostForm toggleForm={ toggleForm }/> }
     </div>
 )}
 
