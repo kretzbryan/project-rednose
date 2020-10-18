@@ -18,10 +18,9 @@ export default function( state= initialState, action ) {
                 loading: false
             };
         case GET_PROFILES:
-            console.log(payload)
             return {
                 ...state,
-                profiles: [...payload.profiles.filter( profile => profile._id !==  payload.id)],
+                profiles: [...payload.profiles.filter( profile => profile._id !==  payload.user)],
                 loading: false
             }
         case PROFILE_ERROR:

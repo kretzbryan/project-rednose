@@ -1,14 +1,25 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 const EditGigForm = ({ gig, toggleForm }) => {
     const [ formData, setFormData ] = useState({
         title: '',
         location: '',
-        text: ''
+        text: '',
+        id: ''
     })
 
     const { location, title, text } = formData;
+
+    useEffect(()=> {
+        const { location, title, text, _id } = gig
+        setFormData({
+            title,
+            location,
+            text,
+            id: _id
+        })
+    }, [])
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -26,7 +37,8 @@ const EditGigForm = ({ gig, toggleForm }) => {
                 setFormData({
                     title: '',
                     location: '',
-                    text: ''
+                    text: '',
+                    id: ''
                 });
                 toggleForm()
                 }}>

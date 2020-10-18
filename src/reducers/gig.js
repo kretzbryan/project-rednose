@@ -14,7 +14,7 @@ export default function( state = initialState, action ) {
         case ADD_GIG:
             return {
                 ...state,
-                gigs: [...state.gigs, ...payload],
+                gigs: [payload, ...state.gigs],
                 loading: false
             }
         case DELETE_GIG:

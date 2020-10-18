@@ -3,37 +3,26 @@ import { addPost, editPost } from '../../actions/post';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const PostForm = ({ toggleForm, addPost, post, editPost }) => {
-    const [ formData, setFormData ] = useState({
-        text: '',
-        name:  '',
-        user:  ''
-    });
+const AddPostForm = ({ toggleForm, addPost}) => {
+    const [ text, setText ] = useState()
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!post) {
-        addPost(formData.text);
+        addPost(text);
         toggleForm();
-        } else {
-            editPost(formData);
-            toggleForm();
-        }
     }
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
+        e.preventDefault()
+        setText(e.target.value)
     }
     
 
     return (
         <Fragment>
             <form onSubmit= {handleSubmit}>
-                <textarea name="text" placeholder="Say whats on your mind..." value={formData.text} cols="45" rows="7" onChange={handleChange} required></textarea>
+                <textarea name="text" placeholder="Say whats on your mind..." value={text} cols="45" rows="7" onChange={handleChange} required></textarea>
                 <footer className="modal-footer">
                     <button type="button" className="btn btn-secondary" onClick={toggleForm} >Close</button>
                     <button type="submit" className="btn btn-primary">Confirm</button>
@@ -43,6 +32,8 @@ const PostForm = ({ toggleForm, addPost, post, editPost }) => {
     );
 };
 
+AddPostForm.propTypes = {
+    addPost: PropTypes.func.isRequired
+}
 
-
-export default connect(null, { addPost, editPost })(PostForm);
+export default connect(null, { addPost, editPost })(AddPostForm);

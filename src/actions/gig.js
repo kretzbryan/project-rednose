@@ -11,6 +11,7 @@ export const addGig = ({ title, location, text }) => async dispatch => {
     const body = JSON.stringify({ title, location, text })
     try {
         const res = await api.post('home/add-gig', body, config);
+        console.log(res.data)
         dispatch({
             type: ADD_GIG,
             payload: res.data
@@ -54,9 +55,9 @@ export const deleteGig = id => async dispatch => {
     }
 }
 
-export const editGig = ({ title, location, text, user, _id }) => async dispatch => {
+export const editGig = ({ title, location, text}) => async dispatch => {
     try {
-        const body = JSON.stringify({ title, location, text, user, _id });
+        const body = JSON.stringify({ title, location, text});
         const res = await api.put(`home/edit-gig/${_id}`, body)
         
         dispatch({

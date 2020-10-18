@@ -8,10 +8,8 @@ export const addPost = (text) => async dispatch => {
         }
     }
     const body = JSON.stringify({ text })
-
     try {
         const res = await api.post('home/add-post', body, config);
-        console.log(res.data)
         dispatch({
             type: ADD_POST,
             payload: res.data
