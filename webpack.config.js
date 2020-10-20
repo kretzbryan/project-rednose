@@ -1,9 +1,9 @@
 const path = require('path');
 console.log(path.join(__dirname, 'public'))
 module.exports = {
-    entry: './client/src/index.js',
+    entry: './src/index.js',
     output: {
-        path: path.join(__dirname, 'client/public'),
+        path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },
     module: {
@@ -27,7 +27,7 @@ module.exports = {
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'client/public'),
+        contentBase: path.join(__dirname, 'public'),
         historyApiFallback: true
     }
 };
