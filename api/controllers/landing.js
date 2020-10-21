@@ -8,16 +8,6 @@ const mongoose= require('mongoose');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 
-const mongoURI = 'mongodb://localhost:27017/circusnetwork';
-const conn = mongoose.createConnection(mongoURI);
-
-let gfs;
-
-conn.once('open', () => {
-    gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection('profileImages');
-})
-
 
 
 router.get('/', (req, res) => {

@@ -53,12 +53,16 @@ export const register = ({ firstName, lastName, username, email, password }) => 
 }
 
 export const login = ( username, password ) => async dispatch => {
-
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
     
     const body = JSON.stringify({ username, password });
 
     try{
-        const res = await api.post('user/login', body);
+        const res = await api.post('user/login', body, config);
         dispatch({
             type: LOGIN_CONFIRMED,
             payload: res.data

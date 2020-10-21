@@ -9,7 +9,7 @@ export const addPost = (text) => async dispatch => {
     }
     const body = JSON.stringify({ text })
     try {
-        const res = await api.post('home/add-post', body, config);
+        const res = await api.post('post', body, config);
         dispatch({
             type: ADD_POST,
             payload: res.data
@@ -24,7 +24,7 @@ export const addPost = (text) => async dispatch => {
 
 export const getPosts = () => async dispatch => {
     try {
-        const res = await api.get('posts');
+        const res = await api.get('post');
         dispatch({
             type: GET_POSTS,
             payload: res.data
