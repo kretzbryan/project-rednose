@@ -23,6 +23,15 @@ router.get('/', async (req, res) => {
     
 })
 
+// Shows all profiles with the exception of the current User
+router.get('/all', auth, async (req, res) => {
+    try {
+        const profiles = await db.User.find({}).select('-password') 
+        res.json({ profiles })
+    } catch(err) {
+        res.status(500).send({ msg: 'An error occured.' })
+    }
+})
 
 router.get('/:id', async (req, res) => {
     try {

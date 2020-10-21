@@ -6,6 +6,6 @@ module.exports = {
     faq: require('./faq'),
     register: require('./register'),
     post: require('./post'),
-    gigs: require('./gigs'),
+    gig: require('./gig'),
     user: require('./user')
 }
