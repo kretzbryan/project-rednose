@@ -7,6 +7,7 @@ import UserProfileCard from '../components/UserProfileCard';
 import { getUserDashboard } from '../actions/profile'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Fragment } from 'react';
 
 
 
@@ -15,11 +16,11 @@ const Home = ({ getUserDashboard, auth, profile }) => {
         getUserDashboard()
     }, [])
     return (
-            <div className="row main__container">
+            <Fragment >
                 <UserProfileCard />
                 <PostColumn />
                 <GigColumn />
-            </div>
+            </Fragment>
         )
 }
 

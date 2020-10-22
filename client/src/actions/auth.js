@@ -12,7 +12,7 @@ export const loadUser = () => async dispatch => {
     }
 
     try {
-        const res = await api.get('/auth');
+        const res = await api.get('/user');
         dispatch({
             type: USER_LOADED,
             payload: res.data
@@ -35,7 +35,7 @@ export const register = ({ firstName, lastName, username, email, password }) => 
     const body = JSON.stringify({ firstName, lastName, username, email, password });
 
     try {
-        const res = await api.post('user/register', body, config);
+        const res = await api.post('register', body, config);
         dispatch(setAlert('Register Success!', 'success'));
         dispatch({
             type: REGISTER_CONFIRMED

@@ -35,7 +35,6 @@ app.use(
 }))
 
 
-app.use('/api/', controllers.landing);
 app.use('/api/user', controllers.user);
 app.use('/api/register', controllers.register);
 app.use('/api/profile', controllers.profile);

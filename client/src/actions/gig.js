@@ -10,7 +10,7 @@ export const addGig = ({ title, location, text }) => async dispatch => {
 
     const body = JSON.stringify({ title, location, text })
     try {
-        const res = await api.post('home/add-gig', body, config);
+        const res = await api.post('gig', body, config);
         console.log(res.data)
         dispatch({
             type: ADD_GIG,
@@ -27,8 +27,7 @@ export const addGig = ({ title, location, text }) => async dispatch => {
 
 export const getGigs = () => async dispatch => {
     try {
-        const res = await api.get('gigs');
-        console.log(res.data)
+        const res = await api.get('gig');
         dispatch({
             type: GET_GIGS,
             payload: res.data
@@ -44,7 +43,7 @@ export const getGigs = () => async dispatch => {
 export const deleteGig = id => async dispatch => {
     try {
 
-        const res = api.delete(`home/delete-gig${id}`);
+        const res = api.delete(`gig${id}`);
         dispatch({
             type: DELETE_GIG,
             payload: id
@@ -58,7 +57,7 @@ export const deleteGig = id => async dispatch => {
 export const editGig = ({ title, location, text}) => async dispatch => {
     try {
         const body = JSON.stringify({ title, location, text});
-        const res = await api.put(`home/edit-gig/${_id}`, body)
+        const res = await api.put(`gig/${_id}`, body)
         
         dispatch({
             type: EDIT_POST,

@@ -2,14 +2,13 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 
-router.get('/', (req, res) => {
-    db.Gig.find({}, (err, gigs) => {
-        if(err) {
-            res.status(500).json({ message: 'Internal Server Error' })
-        } else {
-            res.status(200).json({ gigs })
-        }
-    })
+router.get('/', async (req, res) => {
+    try {
+        const gigs = await db.Gig.find();
+        res.json( gigs )
+    } catch (err) {
+
+    }
 })
 
 // Creates gig with author Id, adds gig id to user.Gigs

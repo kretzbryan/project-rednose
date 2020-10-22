@@ -3,7 +3,8 @@ import { GET_PROFILE, PROFILE_ERROR, GET_PROFILES } from './types';
 
 export const getUserDashboard = () => async dispatch => {
     try {
-        const res = await api.get('user/home');
+        const res = await api.get('user');
+        console.log(res.data)
         dispatch({
             type: GET_PROFILE,
             payload: res.data
@@ -34,7 +35,7 @@ export const getUserProfile = id => async dispatch => {
 export const getAllProfiles = () => async dispatch => {
     try {
         
-        const res = await api.get('profiles');
+        const res = await api.get('profile/all');
 
         dispatch({
             type: GET_PROFILES,

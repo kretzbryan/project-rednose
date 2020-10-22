@@ -8,26 +8,13 @@ const mongo = require('mongodb')
 const mongoose = require('mongoose');
 const auth = require('../middleware/auth')
 
-router.get('/', async (req, res) => {
-    try {
-        const currentUser = await db.User.findById(req.user.id).select('-password');
-        const allPosts = await db.Post.find({}).populate('author');
-        const allGigs = await db.Gig.find({}).populate('author');
-        // res.status(200).json({gigs: allGigs, posts: allPosts})
-        res.json({ currentUser: currentUser, posts: allPosts, gigs: allGigs })
-    } catch (err) {
-        if(err) {
-            res.status(500).json({message: 'An error occurred. Please try again .'})
-        }
-    }
-    
-})
 
 // Shows all profiles with the exception of the current User
 router.get('/all', auth, async (req, res) => {
     try {
-        const profiles = await db.User.find({}).select('-password') 
-        res.json({ profiles })
+        const profiles = await db.User.find().select('-password') 
+        const user = req.user.id
+        res.json({ profiles, user })
     } catch(err) {
         res.status(500).send({ msg: 'An error occured.' })
     }

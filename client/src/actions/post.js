@@ -39,7 +39,7 @@ export const getPosts = () => async dispatch => {
 
 export const deletePost = id => async dispatch => {
     try {
-        const res =  await api.delete(`home/delete-post/${id}`);
+        const res =  await api.delete(`post/${id}`);
         dispatch({
             type: DELETE_POST,
             payload: id
@@ -55,7 +55,7 @@ export const deletePost = id => async dispatch => {
 export const getCurrentPost = ( id ) => async dispatch => {
     try {
 
-        const res = await api.get(`posts/${id}`)
+        const res = await api.get(`post/${id}`)
 
         dispatch({
             type: GET_POST,
@@ -74,7 +74,7 @@ export const editPost = ( post ) => async dispatch => {
     const body = JSON.stringify(post)
 
     try {
-        const res =  await api.put(`posts/${post.id}`, body)
+        const res =  await api.put(`post/${post.id}`, body)
         dispatch({
             type: EDIT_POST,
             payload: res.data

@@ -4,14 +4,25 @@ const db = require('../models');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth')
+const config = require('../config/default')
+
+router.get('/', auth, async (req, res) => {
+    try {
+        console.log(req.user)
+        const user = await db.User.findById(req.user.id).select('-password');
+        res.json({ user })
+    } catch(err) {
+        res.status(500).send({ msg: 'An error occured.' })
+    }
+})
 
 // logs in user and creates token for logged user
 router.post('/login', async function(req, res){
-    console.log('initial request', req);
     const { username, password } = req.body;
     try {
 
         const foundUser = await db.User.findOne({username});
+        console.log(foundUser)
         if (!foundUser) {
             return res.status(400).json({message:'Password or email incorrect.'})
         }

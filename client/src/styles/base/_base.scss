@@ -1,11 +1,22 @@
-* {
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
     font-family: 'Montserrat', sans-serif;
 }
 
-body {
-    max-width: 1600px;
+html {
+    font-size: 62.5%;
 }
+
+body {
+    box-sizing: border-box;
+    background-color: $color-grey-light;
+}
+
+
 
 body::-webkit-scrollbar {
     display: none;
@@ -45,10 +56,7 @@ html {
     font-size: 62.5%;
 }
 
-body {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: $m-size;
-}
+
 
 
 button {
