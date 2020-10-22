@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../actions/auth'
 import React, { useState, Fragment } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, NavItem, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavLink } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, NavItem, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, a } from 'reactstrap';
 import auth from '../reducers/auth';
 
 
@@ -10,41 +10,39 @@ const Header = ({ auth: { isAuthenticated, loading, user}, logout }) => {
 
     const authLinks = (
         <Fragment>
-            <NavItem className="nav-item active">
-                <NavLink className="nav-link" href="/home">Home <span className="sr-only">(current)</span></NavLink>
-            </NavItem>
-            <NavItem className="nav-item">
-                <NavLink className="nav-link"  to={ isAuthenticated && !loading && user && `/profile${user._id}`} > View Profile</NavLink>
-            </NavItem>
-            <NavItem className="nav-item">
-                <NavLink className="nav-link" href="/browse">Browse Profiles</NavLink>
-            </NavItem>
-            <NavItem className="nav-item">
-                <NavLink href="/" className="nav-link" onClick={logout} >Log Out</NavLink>
-            </NavItem>
+            <ul className='nav__list'>
+                <li className="nav__item active">
+                    <a className="nav__link" href="/home">Home <span className="sr-only">(current)</span></a>
+                </li>
+                <li className="nav__item">
+                    <a className="nav__link"  href='#' > View Profile</a>
+                </li>
+                <li className="nav__item">
+                    <a className="nav__link" href="/browse">Browse Profiles</a>
+                </li>
+                <li className="nav__item">
+                    <a href="/" className="nav__link" onClick={logout} >Log Out</a>
+                </li>
+            </ul>
         </Fragment>
     )
 
     const guestLinks = (
         <Fragment>
-            <NavItem className="nav-item">
-                <NavLink className="nav-link" href='#' data-toggle="modal" data-target="#loginModal">Login</NavLink>
-            </NavItem>
-            <NavItem className="nav-item">
-                <NavLink className="nav-link" href='#' data-toggle="modal" data-target="#registerModal">Sign Up</NavLink>
-            </NavItem>
+            <ul className='nav__list'>
+                <li className="nav__item">
+                    <a className="nav__link" href='#login'>Login</a>
+                </li>
+                <li className="nav__item">
+                    <a className="nav__link" href='#' data-toggle="modal" data-target="#registerModal">Sign Up</a>
+                </li>
+            </ul>
         </Fragment>
     )
         return (
-            <Navbar className="navbar-fixed-top" expand='md'>
-                <NavbarBrand className="navbar-brand" href="/">Rednose</NavbarBrand>
-                
-                <Collapse className="collapse navbar-collapse" id="navbarNav">
-                    <Nav className="navbar-nav">
-                        { isAuthenticated && !loading ? authLinks : guestLinks }
-                    </Nav>
-                </Collapse>
-            </Navbar>
+            <div className='nav'>
+                { isAuthenticated && !loading ? authLinks : guestLinks }
+            </div>
         )
 }
 

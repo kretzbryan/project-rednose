@@ -1,12 +1,12 @@
   /* Landing Page Elements */
   .landing__container {
     width: 100vw;
-    height: 90vh;
+    height: 85vh;
     padding: 0 auto;
     overflow: scroll;
     background-color:  #fbf9fa;
     position: fixed;
-    top:5vh;
+    top:10vh;
 }
 
 .landing__container::-webkit-scrollbar {

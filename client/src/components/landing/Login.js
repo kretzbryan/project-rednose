@@ -30,15 +30,18 @@ const Login = ({ login, isAuthenticated }) => {
     
     return (
         <Fragment>
-            <form onSubmit={onSubmit} method='POST'>
-                <div className="form-group">
-                    <input type="text" name='username' onChange={handleChange} placeholder='Username'/>
+            <form onSubmit={onSubmit} method='POST' className='login-form' autoComplete='off'>
+                <div className="login-form__group">
+                    <input type="text" name='username' id='username' className='login-form__input' onChange={handleChange} placeholder='Username' minLength='6' required/>
+                    <label htmlFor="username" className='login-form__label'>Username</label>
                 </div>
-                <div className="form-group">
-                    <input type="password" name='password' onChange={handleChange} placeholder='Password'/>
+                <div className="login-form__group">
+                    <input type="password" name='password' id='password' className='login-form__input' onChange={handleChange} placeholder='Password' minLength='6' required/>
+                    <label htmlFor="password" className='login-form__label' >Password</label>
                 </div>
                 <button type="submit" className="btn btn-primary">Log In</button>
             </form>
+            <p className='login-form__footer'>Not already a member? <a href="#" className="signup_link">Sign up here</a> </p>
         </Fragment>
     )
 }
