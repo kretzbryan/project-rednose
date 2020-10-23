@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import GigColumn from '../components/gigs/GigColumn';
 import PostColumn from '../components/posts/PostColumn';
+import EditProfileCard from '../components/profile/EditProfileCard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import UserProfileCard from '../components/UserProfileCard';
+import DashboardNavTwo from '../components/DashboardNavTwo';
 import { getUserDashboard } from '../actions/profile'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -17,11 +19,17 @@ const Home = ({ getUserDashboard, auth, profile }) => {
     }, [])
     return (
             <div className='row dashboard' >
-                <div className="dashboard-col-2-of-3 col-2-of-3">
+            <section className="dashboard__column--1">
+                <EditProfileCard />
+                <DashboardNavTwo />
+                </section>
+                <section className="dashboard__column--2">
                     <UserProfileCard />
                     <PostColumn />
-                </div>
+                    </section>
+                <section className='dashboard__column--3'>
                 <GigColumn />
+                </section>
             </div>
         )
 }

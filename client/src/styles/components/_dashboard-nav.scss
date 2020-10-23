@@ -1,31 +1,115 @@
 .dashboard-nav {
-    height: 100%;
-    width: 65%;
 
-   
-    &__row {
-        width: 70%;
-        height: 50%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        display: flex;
-        justify-content: center;
+    &--1 {
+        width: 80%;
+        height: 14rem;
+        background-color: $color-white;
+        box-shadow: $box-shadow-default;
+        border-radius: $border-radius-default;
+        position: relative;
+        left: 10%;
 
+        [class*='_section'] {
+            width: 50%;
+            height: 90%;
+            margin: 0;
+
+            & ul {
+                height: 100%;
+                position: relative;
+                top: 5%;
+                margin: auto;
+                list-style: none;
+
+                &:after {
+                    content: '';
+                    border-left: 1px solid $color-red;
+                }
+
+                
+
+                & li {
+                    text-align: center;
+                    font-size: 1.2rem;
+
+                    &:not(:last-child) {
+                    margin-bottom: 1rem;
+                    }
+
+                }
+            }
+        }
+
+        &__section {
+            &--1 {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            &--2 {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
     }
 
-    &__col-1-of-2 {
-        height: 100%;
+    &--2 {
+        margin-top: $margin-sm;
+        width: 70%;
+        height: 35rem;
+        background-color: $color-white;
+        box-shadow: $box-shadow-default;
+        border-radius: $border-radius-default;
 
-        & li {
-            list-style: none;
-            
+        &__section {
+            height: 50%;
+            width: 80%;
+            position: relative;
+            left: 10%;
+            text-align: center;
+
             &:not(:last-child) {
-                margin-bottom: 2rem;
+                border-bottom: 1px solid $color-red;
+            }
+
+            & ul {
+                height: 60%;
+                width: 80%;
+                list-style: none;
+                position: relative;
+                top: 20%;
+                left: 10%;
+
+                & li {
+                margin-bottom: $margin-sm;
+                position: relative;
+                
+                
+                    &:hover:after {
+                    width: 100%;
+                    }
+                
+                    &:after {
+                        content: '';
+                        height: 2px;
+                        margin: auto;
+                        display: block;
+                        width: 0;
+                        border-bottom: 1px solid red;
+                        transition: all .3s;
+                    }
+                }
             }
         }
 
     }
 
+   
+  
+
 }
+
+
+

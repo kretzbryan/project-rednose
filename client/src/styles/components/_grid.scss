@@ -1,8 +1,12 @@
 .row {
     max-width: 100vw;
+    margin: 0 auto;
 
-
-    @include clearfix;
+    &::after {
+        content: '';
+        display: table;
+        clear: both
+    }
 
     [class^='col-'] {
         float: left;
@@ -12,7 +16,6 @@
         }
     }
 
-    @include clearfix;
 
     .col {
         &-1-of-3 {

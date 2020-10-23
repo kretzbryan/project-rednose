@@ -17,7 +17,7 @@ const CreatePostContainer = () => {
         <a onClick={toggleForm} data-toggle="modal" data-target="#addPostModal" className='create__post__caption anchor'>
             <p className='options'>Say Something!</p>
         </a>
-        { formOpen === true && <AddPostForm toggleForm={ toggleForm }/> }
+        { /* formOpen === true && <AddPostForm toggleForm={ toggleForm }/> */ }
     </div>
 )}
 

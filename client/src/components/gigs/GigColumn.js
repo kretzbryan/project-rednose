@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import GigCard from './GigCard';
 import { register } from '../forms/forms';
 import AddGigContainer from '../gigs/AddGigContainer';
@@ -12,12 +12,12 @@ const GigColumn = ({ getGigs, gig: { gigs } }) => {
        getGigs()
     }, [getGigs])
     return (
-    <div className='dashboard-col-1-of-3 col-1-of-3'>
+    <Fragment>
         <AddGigContainer />
         { gigs.map( gig => (
             <GigCard key={gig._id} gig={gig} />
         ))}
-    </div>
+    </Fragment>
 )}
 
 GigColumn.propTypes = {

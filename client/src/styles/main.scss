@@ -1,8 +1,8 @@
 
 // Abstracts
-@import 'abstracts/functions';
-@import 'abstracts/mixins';
-@import 'abstracts/variables';
+@import './abstracts/functions';
+@import './abstracts/mixins';
+@import './abstracts/variables';
 
 // Base Styling
 @import './base/typography';
@@ -27,3 +27,6 @@
 @import './components/dashboard-profile-card';
 @import './components/edit';
 @import './pages/home';
+@import './components/create-post';
+@import './components/profile-card';
+@import './components/dashboard-nav';

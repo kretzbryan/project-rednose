@@ -9,7 +9,6 @@
     left: 0px;
     display: flex;
     justify-content: flex-end;
-    z-index: -100;
 
     &__item {
         margin: 0 1rem;
@@ -19,7 +18,7 @@
         display: inline-block;
         color:  $color-red;
         font-size: 2rem;
-        text-decoration: rgb(216, 7, 7);
+        text-decoration: none;
     } 
 
     &__list {

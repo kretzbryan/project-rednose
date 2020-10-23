@@ -1,0 +1,25 @@
+
+.create__post {
+    display: flex;
+    flex-direction: row;
+    right: 5%;
+    background-color: rgba(43, 32, 36, .2);
+    box-shadow: $box-shadow-default;
+    width: 80%;
+    padding: 15px 30px;
+    margin: 3rem auto;
+    border: none;
+    border-radius: 4px;
+
+    &__caption {
+        color: black;
+        padding: 3px 15px;
+        margin: auto;
+        margin-left: 10px;
+        width: 350px;
+        height: 30px;
+        background-color: rgba(43, 32, 36, 0.1);
+        border-radius: 15px;
+    }
+}
+

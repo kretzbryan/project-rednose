@@ -1,11 +1,12 @@
 .edit {
     height: 100%;
-    width: 35%;
+    width: 30%;
     position: absolute;
     bottom: 0;
     left: 0;
     display: inline-block;
     text-align: center;
+    border-radius: $border-radius-default;
 
     &__container {
         height: 80%;
