@@ -1,0 +1,31 @@
+.dashboard-nav {
+    height: 100%;
+    width: 65%;
+
+   
+    &__row {
+        width: 70%;
+        height: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: flex;
+        justify-content: center;
+
+    }
+
+    &__col-1-of-2 {
+        height: 100%;
+
+        & li {
+            list-style: none;
+            
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
+
+    }
+
+}

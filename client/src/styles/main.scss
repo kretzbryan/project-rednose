@@ -7,6 +7,7 @@
 // Base Styling
 @import './base/typography';
 @import './base/base';
+@import './base/utilities';
 
 
 // Components
@@ -15,7 +16,7 @@
 @import './components/footer';
 @import './components/landing';
 @import './components/user-profile__card';
-@import './components/home';
+@import './components/dashboard-nav';
 @import './components/profile-browse';
 @import './components/popup';
 @import './components/login-form';
@@ -24,4 +25,5 @@
 @import './components/about';
 @import './components/grid';
 @import './components/dashboard-profile-card';
-@import './pages/home'
+@import './components/edit';
+@import './pages/home';

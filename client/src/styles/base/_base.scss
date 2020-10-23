@@ -11,6 +11,8 @@ html {
     font-size: 62.5%;
 }
 
+
+
 body {
     height: 100vh;
     box-sizing: border-box;
@@ -34,6 +36,22 @@ i.fas.fa-user-edit {
     text-align: end;
 }
 
+.footer {
+    background-color: $color-grey-light;
+    color:  $color-red;
+    margin: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 100;
+    width: 100vw;
+    padding: 1.5rem 2rem ;
+    text-align: end;
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -10000;
+}
 /* All pages except the landing page are contained within this container */
 
 

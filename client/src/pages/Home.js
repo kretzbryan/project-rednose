@@ -17,12 +17,11 @@ const Home = ({ getUserDashboard, auth, profile }) => {
     }, [])
     return (
             <div className='row dashboard' >
-                <div className="col-2-of-3">
+                <div className="dashboard-col-2-of-3 col-2-of-3">
                     <UserProfileCard />
-                    <PostColumn /></div>
-                <div className="col-1-of-3">
-                    <GigColumn />
+                    <PostColumn />
                 </div>
+                <GigColumn />
             </div>
         )
 }

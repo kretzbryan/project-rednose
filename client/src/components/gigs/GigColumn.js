@@ -12,7 +12,7 @@ const GigColumn = ({ getGigs, gig: { gigs } }) => {
        getGigs()
     }, [getGigs])
     return (
-    <div className='gig__column'>
+    <div className='dashboard-col-1-of-3 col-1-of-3'>
         <AddGigContainer />
         { gigs.map( gig => (
             <GigCard key={gig._id} gig={gig} />
