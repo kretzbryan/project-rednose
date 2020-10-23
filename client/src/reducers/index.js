@@ -3,12 +3,14 @@ import alert from './alert';
 import auth from './auth';
 import profile from './profile';
 import post from './post';
-import gig from './gig'
+import gig from './gig';
+import form from './form';
 
 export default combineReducers({
     alert,
     auth,
     profile,
     post,
-    gig
+    gig,
+    form
 })

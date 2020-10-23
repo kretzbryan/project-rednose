@@ -39,7 +39,7 @@ const Login = ({ login, isAuthenticated }) => {
                     <input type="password" name='password' id='password' className='login-form__input' onChange={handleChange} placeholder='Password' minLength='6' required/>
                     <label htmlFor="password" className='login-form__label' >Password</label>
                 </div>
-                <button type="submit" className="btn btn-primary">Log In</button>
+                <button type="submit" className="btn form-button login-form__button">Log In</button>
             </form>
             <p className='login-form__footer'>Not already a member? <a href="#" className="signup_link">Sign up here</a> </p>
         </Fragment>

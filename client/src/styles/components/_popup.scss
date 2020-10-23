@@ -1,7 +1,7 @@
 .popup {
     width: 100vw;
     height: 110vh;
-    background-color: rgba($color-black, .6);
+    background-color: rgba($color-black, .3);
     position: fixed;
     top: 0;
     left: 0;
@@ -17,10 +17,10 @@
     }
 
     &__header {
+        height: 20%;
         display: flex;
         margin: 0 auto;
         justify-content: center;
-        margin-bottom: 3rem;
 
 
         &--text {

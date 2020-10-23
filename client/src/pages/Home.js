@@ -16,11 +16,14 @@ const Home = ({ getUserDashboard, auth, profile }) => {
         getUserDashboard()
     }, [])
     return (
-            <Fragment >
-                <UserProfileCard />
-                <PostColumn />
-                <GigColumn />
-            </Fragment>
+            <div className='row dashboard' >
+                <div className="col-2-of-3">
+                    <UserProfileCard />
+                    <PostColumn /></div>
+                <div className="col-1-of-3">
+                    <GigColumn />
+                </div>
+            </div>
         )
 }
 

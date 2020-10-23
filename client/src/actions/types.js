@@ -23,4 +23,5 @@ export const EDIT_GIG = 'EDIT_GIG';
 export const GIG_ERROR = 'GIG_ERROR';
 export const GET_GIGS = 'GET_GIGS';
 export const DELETE_GIG = 'DELETE_GIG';
+export const SET_FORM = 'SET_SIGNUP';
 

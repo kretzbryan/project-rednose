@@ -1,0 +1,14 @@
+.dashboard-profile-card {
+    width: 65rem;
+    height: 20rem;
+    background-color: $color-white;
+    border-radius: 3px;
+    box-shadow: 0 1rem 2rem rgba($color-black, .3);
+    margin-top: $margin-med;
+
+    &__image {
+        width: 35%;
+        height: 100%;
+        object-fit: cover;
+    }
+}

@@ -2,11 +2,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../actions/auth'
 import React, { useState, Fragment } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, NavItem, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, a } from 'reactstrap';
-import auth from '../reducers/auth';
+import { setSignup } from '../actions/form';
 
 
-const Header = ({ auth: { isAuthenticated, loading, user}, logout }) => {
+const Header = ({ auth: { isAuthenticated, loading, user}, logout, setSignup }) => {
 
     const authLinks = (
         <Fragment>
@@ -34,7 +33,7 @@ const Header = ({ auth: { isAuthenticated, loading, user}, logout }) => {
                     <a className="nav__link" href='#login'>Login</a>
                 </li>
                 <li className="nav__item">
-                    <a className="nav__link" href='#' data-toggle="modal" data-target="#registerModal">Sign Up</a>
+                    <a className="nav__link" href='#signup' onClick={() => setSignup()} >Sign Up</a>
                 </li>
             </ul>
         </Fragment>
@@ -55,5 +54,6 @@ const mapStateToProps = state => ({
 Header.propTypes = {
     logout: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
+    setSignup: PropTypes.func.isRequired
 }
-export default connect(mapStateToProps, { logout })(Header)
+export default connect(mapStateToProps, { logout, setSignup })(Header)

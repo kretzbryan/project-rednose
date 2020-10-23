@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
-import Login from '../components/landing/Login'
+import Login from '../components/landing/Login';
+import { connect } from 'react-redux';
 
-const Popup = props => {
+const Popup = ({ form: { name } }) => {
+    const [formName, setFormName] = useState([]);
+
+    useEffect(() => {
+        setFormName(name);
+    })
+
+
     return (
-        <div className='popup' id='login'>
+        <div className='popup' id='signup'>
             <div className="popup__content">
                 <div className="popup__header">
                     <a href="#" className="popup__close">&times;</a>
@@ -17,7 +25,11 @@ const Popup = props => {
 }
 
 Popup.propTypes = {
-
+    form: PropTypes.object.isRequired,
 }
 
-export default Popup
+const mapStateToProps = state => ({
+    form: state.form
+})
+
+export default connect(mapStateToProps)(Popup)
