@@ -1,15 +1,14 @@
 .profile-card {
-    width: 70%;
     height: 20rem;
     display: inline-block;
     background-color: $color-white;
     border-radius: 3px;
     box-shadow: 0 1rem 2rem rgba($color-black, .3);
-    position: relative;
     transition: all 1s;
     backface-visibility: hidden;
     display: inline-block;
     border-radius: $border-radius-default;
+    @include profileColumnPresets;
 
 
     &__image {

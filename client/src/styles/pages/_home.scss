@@ -2,41 +2,33 @@
 
  .dashboard {
      height: 90vh;
-     width: 100vw;
      position: fixed;
      top: 10vh;
      left: 0;
      overflow: scroll;
      z-index: 100;
      
+     &::-webkit-scrollbar {
+        display: none;
+     }
      @include clearfix;
+
+     [class*='_column'] {
+         @include dashboardPresets;
+     }
 
      &__column {
 
         &--1 {
-            width: 20%;
-            position: fixed;
-            margin-top: $margin-med;
-            top: 10vh;
-            left: 3%;
-
+            width: 25vw;
         }
 
         &--2 {
-            width: 49%;
-            position: fixed;
-            margin-top: $margin-med;
-            top: 10vh;
-            left: 23%;
+            width: 50vw;
         }
 
         &--3 {
-            width: 25%;
-            position: fixed;
-            margin-top: $margin-med;
-            top: 10vh;
-            right: 3%;
-            background-color: violet;
+            width: 25vw;
         }
 
 
@@ -44,7 +36,10 @@
 
  }
 
-  
+ [class^='icon-'] {
+     height: 2.5rem;
+     width: 2.5rem;
+}
 
 /* 
 

@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import App from './app';
 
-import 'normalize.css/normalize.css'
+import 'normalize.css/normalize.css';
 import './styles/main.scss';
 
 ReactDOM.render(

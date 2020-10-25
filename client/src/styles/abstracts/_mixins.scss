@@ -8,3 +8,33 @@
     }
 
 }
+
+@mixin postColumnPresets {
+    width: 90%;
+    position: relative;
+    left: 5%;
+}
+@mixin profileColumnPresets {
+    width: 70%;
+    position: relative;
+    left: 15%;
+}
+
+@mixin cardPreset {
+    background-color: $color-white;
+    box-shadow: $box-shadow-default;
+    border-radius: $border-radius-default;
+}
+
+@mixin dashboardPresets {
+    height: 100%;
+    overflow: scroll;
+
+    
+    display: inline-block;
+    top: 10vh;
+
+    &::-webkit-scrollbar {
+        display: none;
+     }
+}

@@ -21,11 +21,11 @@ const PostContainer = ({post}) => {
     return (
         <div>
     { !formOpen ? (
-        <div className="row card post__container">
+        <div className="post">
             <PostHeader name={name}  />
             <PostContent text={text} />
             <PostFooter id={_id} user={user} toggleForm={toggleForm}/>
-        </div>) : ( <div className="row card post__container">
+        </div>) : ( <div className="post">
                         <PostHeader name={name}  />
                         <EditPostForm post={post} toggleForm={toggleForm} />
                     </div>) }

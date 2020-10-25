@@ -12,12 +12,12 @@ const CreatePostContainer = () => {
     }
     
     return (
-    <div className="row card create__post">
+    <div className="create__post">
         <img src={image} alt="profile thumbnail" className="create__post__thumb" />
         <a onClick={toggleForm} data-toggle="modal" data-target="#addPostModal" className='create__post__caption anchor'>
             <p className='options'>Say Something!</p>
         </a>
-        { /* formOpen === true && <AddPostForm toggleForm={ toggleForm }/> */ }
+        { formOpen === true && <AddPostForm toggleForm={ toggleForm }/> }
     </div>
 )}
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const auth = require('../middleware/auth')
 
 router.get('/', (req, res) => {
     db.Post.find({} ,(err, posts) => {
@@ -14,24 +15,24 @@ router.get('/', (req, res) => {
 
 
 // Creates a post with author id, adds post id to User.posts
-router.post('/', (req, res) => {
-    db.Post.create(req.body, (err, addedPost) => {
-        if (err) {
-            console.log(err);
-        } else {
-            db.User.findById(req.session.currentUser.id, (err, foundUser) => {
-                if(err) {
-                    console.log(err);
-                } else {
-                    foundUser.posts.push(addedPost.id);
-                    foundUser.save();
-                    res.redirect('/home')
-                }
-            })
-        }
-    })
-})
 
+
+router.post('/', auth, async (req, res) => {
+    try {
+        const user = await db.User.findById(req.user.id);
+        const newPost = new db.Post({
+            text: req.body.text,
+            name: `${user.firstName} ${user.lastName}`,
+            user: user._id
+        }) 
+        const savedPost = await newPost.save();
+        await user.posts.push(savedPost._id);
+        await user.save();
+        res.json(savedPost)
+    } catch (err) {
+        console.log(err)
+    }
+} )
 
 
 router.put('/:id', (req, res) => {
@@ -46,22 +47,16 @@ router.put('/:id', (req, res) => {
 
 
 
-router.delete('/:id', (req, res) => {
-    db.Post.findByIdAndDelete(req.params.id, (err, deletedPost) => {
-        if(err) {
-            console.log(err)
-        } else {
-            db.User.findById(deletedPost.author, (err, foundUser) => {
-                if(err) {
-                    console.log(err);
-                } else {
-                    foundUser.posts.remove(deletedPost)
-                    foundUser.save();
-                    res.redirect('/home');
-                }
-            })
-        }
-    })
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        const deletedPost = await db.Post.findByIdAndDelete(req.params.id);
+        const updatedUser = await db.User.Update({ _id: req.user.id }, {$pull: { posts: req.params._id }})
+        await updatedUser.save();
+        res.json(deletedPost);
+
+    } catch (err) {
+        
+    }
 })
 
 module.exports = router;

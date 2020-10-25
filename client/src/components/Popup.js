@@ -12,7 +12,7 @@ const Popup = ({ form: { name } }) => {
 
 
     return (
-        <div className='popup' id='signup'>
+        <div className='popup' id={formName}>
             <div className="popup__content">
                 <div className="popup__header">
                     <a href="#" className="popup__close">&times;</a>

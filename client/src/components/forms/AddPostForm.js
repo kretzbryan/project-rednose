@@ -20,15 +20,15 @@ const AddPostForm = ({ toggleForm, addPost}) => {
     
 
     return (
-        <Fragment>
-            <form onSubmit= {handleSubmit}>
+        <div className='add-post'>
+            <form onSubmit= {handleSubmit} c>
                 <textarea name="text" placeholder="Say whats on your mind..." value={text} cols="45" rows="7" onChange={handleChange} required></textarea>
                 <footer className="modal-footer">
                     <button type="button" className="btn btn-secondary" onClick={toggleForm} >Close</button>
                     <button type="submit" className="btn btn-primary">Confirm</button>
                 </footer>
             </form>
-        </Fragment>
+        </div>
     );
 };
 

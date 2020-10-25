@@ -1,18 +1,17 @@
 import React, { Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { auth } from '../../actions/auth';
 import { deletePost } from '../../actions/post'
 
 
 const PostFooter = ({ auth , deletePost , user, id, toggleForm}) => {
     // console.log(auth.user)
     return (
-    <div className='options__footer'>
-            { !auth.loading && auth.user && user === auth.user._id && (
+    <div className='post__footer'>
+            { !auth.loading && user === auth.user.user._id && (
                 <Fragment>
-                    <button className='anchor options' onClick={ (e) => deletePost(id) } type='button'><i className="fas fa-trash-alt"></i></button>
-                    <button className='anchor options' onClick={toggleForm} ><i className="fas fa-user-edit"></i></button>
+                    <a className='anchor options' onClick={ (e) => deletePost(id) } type='button'>delete</a>
+                    <a className='anchor options' onClick={toggleForm}>edit post</a>
                 </Fragment> ) }
         </div>
 )}

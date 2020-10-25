@@ -10,8 +10,8 @@ const Header = ({ auth: { isAuthenticated, loading, user}, logout, setSignup }) 
     const authLinks = (
         <Fragment>
             <ul className='nav__list'>
-                <li className="nav__item active">
-                    <a className="nav__link" href="/home">Home <span className="sr-only">(current)</span></a>
+                <li className="nav__item">
+                    <a className="nav__link" href="/home">Home  </a>
                 </li>
                 <li className="nav__item">
                     <a className="nav__link"  href='#' > View Profile</a>
