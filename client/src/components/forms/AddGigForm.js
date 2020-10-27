@@ -10,6 +10,7 @@ const GigForm = ({ toggleForm, addGig }) => {
         text: ''
     })
 
+    const { title, location, text } = formData;
     const handleChange = (e) => {
         e.preventDefault();
         setFormData({

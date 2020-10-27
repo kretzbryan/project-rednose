@@ -35,12 +35,14 @@ app.use(
 }))
 
 
+app.use('/api/comment', controllers.comment);
 app.use('/api/user', controllers.user);
 app.use('/api/register', controllers.register);
 app.use('/api/profile', controllers.profile);
 app.use('/api/faq', controllers.faq);
 app.use('/api/post', controllers.post);
 app.use('/api/gig', controllers.gig);
+
 
 app.listen( PORT, () => {
     console.log(`Now on port ${PORT}`)

@@ -13,11 +13,11 @@ const GigCard = ({ auth, gig }) => {
  
     const toggleForm = () => {
         setFormOpen(!formOpen)
-    }
+    } 
 
 
     return (
-        <div className="row card gig__container">
+        <div className="card gig">
             { !formOpen ? (
                 <Fragment>
                     <GigHeader title={title} location={location}/>

@@ -20,12 +20,12 @@ const AddPostForm = ({ toggleForm, addPost}) => {
     
 
     return (
-        <div className='add-post'>
-            <form onSubmit= {handleSubmit} c>
-                <textarea name="text" placeholder="Say whats on your mind..." value={text} cols="45" rows="7" onChange={handleChange} required></textarea>
-                <footer className="modal-footer">
-                    <button type="button" className="btn btn-secondary" onClick={toggleForm} >Close</button>
-                    <button type="submit" className="btn btn-primary">Confirm</button>
+        <div className='create__post__form' >
+            <form onSubmit= {handleSubmit}>
+                <textarea className='post-form__content' name="text" placeholder="Say whats on your mind..." value={text} cols="45" rows="7" onChange={handleChange} required></textarea>
+                <footer className="post-form__footer">
+                    <button type="button" className="btn post-form__btn" onClick={toggleForm} >Close</button>
+                    <button type="submit" className="btn post-form__btn">Confirm</button>
                 </footer>
             </form>
         </div>
@@ -37,3 +37,4 @@ AddPostForm.propTypes = {
 }
 
 export default connect(null, { addPost, editPost })(AddPostForm);
+

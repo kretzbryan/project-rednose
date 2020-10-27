@@ -20,6 +20,13 @@
     left: 15%;
 }
 
+
+@mixin gigColumnPresets {
+    width: 70%;
+    position: relative;
+    left: 15%;
+}
+
 @mixin cardPreset {
     background-color: $color-white;
     box-shadow: $box-shadow-default;

@@ -4,5 +4,6 @@ module.exports = {
     register: require('./register'),
     post: require('./post'),
     gig: require('./gig'),
-    user: require('./user')
+    user: require('./user'),
+    comment: require('./comment')
 }

@@ -1,5 +1,5 @@
 .post {
-    max-height: 40rem;
+    max-height: 70rem;
     margin-bottom: $margin-med;
     padding: $margin-sm $margin-med;
     @include postColumnPresets;
@@ -22,7 +22,7 @@
     }
 
     &__footer {
-        height: 3rem;
+        max-height: 50rem;
     }
 }
 

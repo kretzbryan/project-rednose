@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const auth = require('../middleware/auth')
 
 router.get('/', async (req, res) => {
     try {
@@ -12,15 +13,22 @@ router.get('/', async (req, res) => {
 })
 
 // Creates gig with author Id, adds gig id to user.Gigs
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     try {
-        const gig = await db.Gig.create(req.body);
-        const author = await db.User.findById(req.user.id);
-        author.gigs.push(gig.id);
-        author.save();
-        gig.author = (author.id);
-        gig.save();
+        const gig = new db.Gig({
+            title: req.body.title,
+            location: req.body.location,
+            text: req.body.text,
+            name: `${req.user.firstName} ${req.user.lastName}`,
+            user: req.user.id
+        })
+        await gig.save();
+        const user = await db.User.findById(req.user.id);
+        await user.gigs.push(gig._id);
+        await user.save();
+        res.json(gig);
     } catch(err) {
+        console.log(err)
         res.status(500).json({ msg: 'An error occured, please try again.' })
     }
 

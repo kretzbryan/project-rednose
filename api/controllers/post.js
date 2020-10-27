@@ -23,6 +23,7 @@ router.post('/', auth, async (req, res) => {
         const newPost = new db.Post({
             text: req.body.text,
             name: `${user.firstName} ${user.lastName}`,
+            comments: req.body.comments,
             user: user._id
         }) 
         const savedPost = await newPost.save();
@@ -49,13 +50,20 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', auth, async (req, res) => {
     try {
-        const deletedPost = await db.Post.findByIdAndDelete(req.params.id);
-        const updatedUser = await db.User.Update({ _id: req.user.id }, {$pull: { posts: req.params._id }})
-        await updatedUser.save();
+        const post = await db.Post.findById(req.params.id);
+
+        if(post.user.toString() !== req.user.id) {
+            return res.status(401).json({ msg: 'User not Authorized' })
+        }
+        
+        const user = await db.User.findById(req.user.id);
+        await user.posts.remove(post);
+        await user.save();
+        const deletedPost = await post.remove();
         res.json(deletedPost);
 
     } catch (err) {
-        
+        console.log(err)
     }
 })
 

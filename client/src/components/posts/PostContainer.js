@@ -7,33 +7,40 @@ import PropTypes from 'prop-types';
 import auth from '../../actions/auth';
 import post from '../../actions/post';
 import EditPostForm from '../forms/EditPostForm';
+import { addPostComment } from '../../actions/comment';
 
 
 
 const PostContainer = ({post}) => {
     const { name, text, _id , user  } = post;
-    const [formOpen, setFormOpen ] = useState(false);
-    
-    const toggleForm = () => {
-        setFormOpen(!formOpen)
+    const [editPostOpen, setEditPostOpen ] = useState(false);
+    const [addCommentOpen, setAddCommentOpen ] = useState(false);
+    const toggleEditPost = () => {
+        setEditPostOpen(!editPostOpen)
+    }
+    const toggleAddPost = () => {
+        setAddCommentOpen(!addCommentOpen)
     }
 
+    
+
     return (
-        <div>
-    { !formOpen ? (
         <div className="post">
-            <PostHeader name={name}  />
+            <PostHeader name={name}  post={post}/>
             <PostContent text={text} />
-            <PostFooter id={_id} user={user} toggleForm={toggleForm}/>
-        </div>) : ( <div className="post">
-                        <PostHeader name={name}  />
-                        <EditPostForm post={post} toggleForm={toggleForm} />
-                    </div>) }
-    </div>
+            <PostFooter id={_id} user={user} toggleEditPost={toggleEditPost}/>
+        </div>
 )}
 
-PostContainer.propTypes = {
-    post: PropTypes.object.isRequired
-}
 
-export default connect(null, { auth, post})(PostContainer);
+export default connect(null, { auth, post, addPostComment })(PostContainer);
+
+/* { !editPostOpen ? (
+    <div className="post">
+        <PostHeader name={name}  post={post}/>
+        <PostContent text={text} />
+        <PostFooter id={_id} user={user} toggleEditPost={toggleEditPost}/>
+    </div>) : ( <div className="post">
+                    <PostHeader name={name}  />
+                    <EditPostForm post={post} toggleEditPost={toggleEditPost} />
+                </div>) } */

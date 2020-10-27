@@ -1,6 +1,5 @@
-import React from 'react';
 
-const register = {
+const registerForm = {
     firstName: {
         type: 'text',
         placeholder: 'First Name',
@@ -33,7 +32,7 @@ const register = {
     }
 }
 
-const login = {
+const loginForm = {
     username: {
         type: 'text',
         placeholder: 'Username',
@@ -46,7 +45,7 @@ const login = {
     }
 }
 
-const post = {
+const postForm = {
     content: {
         type: 'text',
         placeholder: 'content',
@@ -54,7 +53,7 @@ const post = {
     }
 }
 
-const gig = {
+const gigForm = {
     location: {
         type: 'text',
         placeholder: 'Location',
@@ -72,7 +71,7 @@ const gig = {
     }
 }
 
-const user = {
+const userForm = {
     firstName: {
         type: 'text',
         placeholder: 'First Name',
@@ -111,4 +110,4 @@ const user = {
 }
 
 
-export { register, login, post, gig, user };
+export { registerForm, loginForm, postForm, gigForm, userForm };

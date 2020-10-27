@@ -10,6 +10,7 @@ import { getUserDashboard } from '../actions/profile'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Fragment } from 'react';
+import Popup from '../components/Popup';
 
 
 
@@ -30,6 +31,7 @@ const Home = ({ getUserDashboard, auth, profile }) => {
                 <section className='dashboard__column--3'>
                 <GigColumn />
                 </section>
+                <Popup />
             </div>
         )
 }
