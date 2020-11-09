@@ -1,10 +1,11 @@
 import { SET_FORM, FORM_ERROR } from './types';
+import { registerForm, loginForm, postForm, gigForm, userForm } from '../utils/forms';
 
 export const setSignup = () => async dispatch => {
     try {
         dispatch({
             type: SET_FORM,
-            payload: 'signup'
+            payload: loginForm
         })
     } catch (err) {
         dispatch({

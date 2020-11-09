@@ -1,7 +1,8 @@
 import { SET_FORM, FORM_ERROR } from '../actions/types'
 
 const initialState = {
-    name: null,
+    inputs: {},
+    labels: {}
     error: {}
 }
 
@@ -12,7 +13,8 @@ export default function (state= initialState, action) {
         case SET_FORM:
             return {
                 ...state,
-                name: payload
+                inputs: payload.inputs,
+                labels: payload.labels
             }
         case FORM_ERROR: 
             return {

@@ -1,7 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
 
-const Form = props => {
+const Form = ({ form: {inputs, labels}}) => {
+
+    const generateForm = () => {
+        inputs.map(input => {
+            return
+        })
+    }
+
     return (
         <div>
             
@@ -10,7 +18,11 @@ const Form = props => {
 }
 
 Form.propTypes = {
-
+    form: PropTypes.object.isRequired
 }
 
-export default Form
+const mapStateToProps = state => ({
+    form: state.form
+})
+
+export default connect()(Form)

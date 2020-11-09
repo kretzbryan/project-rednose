@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import GigCard from './GigCard';
-import { register } from '../forms/forms';
+import { register } from '../../utils/forms';
 import AddGigContainer from '../gigs/AddGigContainer';
 import { connect } from 'react-redux';
 import { getGigs } from '../../actions/gig';
