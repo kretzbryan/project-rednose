@@ -6,9 +6,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import EditGigForm from '../forms/EditGigForm';
 
-const GigCard = ({ auth, gig }) => {
+const GigCard = ({ auth , gig }) => {
     const [ formOpen, setFormOpen ] = useState(false);
     const { title, location, text, user } = gig
+    console.log('gigcardUser', user)
     const { isAuthenticated, loading } = auth
  
     const toggleForm = () => {
@@ -22,7 +23,7 @@ const GigCard = ({ auth, gig }) => {
                 <Fragment>
                     <GigHeader title={title} location={location}/>
                     <GigDescription text={text} />
-                    { isAuthenticated && !loading && auth.user._id === user &&  (<GigOptions toggleForm={ toggleForm } />)}
+                    {/*  isAuthenticated && !loading && auth.user.user._id === user &&  (<GigOptions toggleForm={ toggleForm } />) */}
                 </Fragment>
             ) : (
                 <EditGigForm gig={ gig } toggleForm={ toggleForm } />

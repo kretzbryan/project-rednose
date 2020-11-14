@@ -7,14 +7,14 @@ import { getGigs } from '../../actions/gig';
 import PropTypes from 'prop-types';
 
 
-const GigColumn = ({ getGigs, gig: { gigs } }) => {
+const GigColumn = ({ getGigs, gig: { gigs, loading } }) => {
     useEffect(() => {
        getGigs()
     }, [getGigs])
     return (
     <Fragment>
         <AddGigContainer />
-        { gigs.map( gig => (
+        {!loading && gigs.map( gig => (
             <GigCard key={gig._id} gig={gig} />
         ))}
     </Fragment>

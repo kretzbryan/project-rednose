@@ -52,7 +52,7 @@ export const register = ({ firstName, lastName, username, email, password }) => 
     }
 }
 
-export const login = ( username, password ) => async dispatch => {
+export const login = ({ username, password }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'

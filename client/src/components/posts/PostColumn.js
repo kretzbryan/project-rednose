@@ -14,9 +14,10 @@ const PostColumn = ({ getPosts, post: { posts, loading} }) => {
     return (
     <Fragment>
         <CreatePostContainer />
-        {posts.map(post => (
-            <PostContainer key={post._id} post={post} />
-        ))}
+        {!loading && posts.map(post => {
+            console.log(post.user)
+            return <PostContainer key={post._id} post={post} loading={loading} />
+        })}
     </Fragment>
 )}
 

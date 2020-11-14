@@ -33,7 +33,7 @@ const Header = ({ auth: { isAuthenticated, loading, user}, logout, setSignup }) 
                     <a className="nav__link" href='#login'>Login</a>
                 </li>
                 <li className="nav__item">
-                    <a className="nav__link" href='#signup' onClick={() => setSignup()} >Sign Up</a>
+                    <a className="nav__link" href='#login' onClick={() => setSignup()} >Sign Up</a>
                 </li>
             </ul>
         </Fragment>

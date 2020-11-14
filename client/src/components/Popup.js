@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import Login from '../components/landing/Login';
 import { connect } from 'react-redux';
+import Form from './forms/Form';
 
 const Popup = ({ form: { name } }) => {
     const [formName, setFormName] = useState([]);
@@ -18,7 +19,7 @@ const Popup = ({ form: { name } }) => {
                     <a href="#" className="popup__close">&times;</a>
                     <h3 className='popup__header--text'>Sign In</h3>
                 </div>
-                <Login />
+                {formName && <Form />}
             </div>
         </div>
     )
@@ -33,3 +34,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(Popup)
+

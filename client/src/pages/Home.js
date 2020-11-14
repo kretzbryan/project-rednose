@@ -6,7 +6,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import UserProfileCard from '../components/UserProfileCard';
 import DashboardNavTwo from '../components/DashboardNavTwo';
-import { getUserDashboard } from '../actions/profile'
+import { getUserDashboard } from '../actions/profile';
+import { getGigs } from '../actions/gig';
+import { getPosts } from '../actions/post';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Fragment } from 'react';
@@ -14,10 +16,13 @@ import Popup from '../components/Popup';
 
 
 
-const Home = ({ getUserDashboard, auth, profile }) => {
+const Home = ({ getUserDashboard, getGigs, getPosts, auth, profile }) => {
     useEffect(() => {
-        getUserDashboard()
+        getUserDashboard();
+        getGigs();
+        getPosts();
     }, [])
+    
     return (
             <div className='row dashboard' >
             <section className="dashboard__column--1">
@@ -39,7 +44,9 @@ const Home = ({ getUserDashboard, auth, profile }) => {
 Home.propTypes = {
     getUserDashboard: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired
+    profile: PropTypes.object.isRequired,
+    getGigs: PropTypes.func.isRequired,
+    getPosts: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -47,4 +54,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 })
 
-export default connect(mapStateToProps, { getUserDashboard } )(Home);
+export default connect(mapStateToProps, { getUserDashboard, getGigs, getPosts } )(Home);
