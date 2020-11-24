@@ -34,7 +34,6 @@ app.use(
     }
 }))
 
-
 app.use('/api/comment', controllers.comment);
 app.use('/api/user', controllers.user);
 app.use('/api/register', controllers.register);

@@ -1,11 +1,25 @@
-import { SET_FORM, FORM_ERROR } from './types';
+import { SET_FORM, FORM_ERROR, CLEAR_FORM } from './types';
 import { registerForm, loginForm, postForm, gigForm, userForm } from '../utils/forms';
 
-export const setSignup = () => async dispatch => {
+export const setLogin = () => async dispatch => {
     try {
         dispatch({
             type: SET_FORM,
             payload: loginForm
+        })
+    } catch (err) {
+        dispatch({
+            type: FORM_ERROR,
+            payload: err
+        })
+    }
+}
+
+export const setRegister = () => async dispatch => {
+    try {
+        dispatch({
+            type: SET_FORM,
+            payload: registerForm
         })
     } catch (err) {
         dispatch({
@@ -29,3 +43,15 @@ export const setEditPost = () => async dispatch => {
     }
 }
 
+export const clearForm = () => async dispatch => {
+    try {
+        dispatch({
+            type: CLEAR_FORM
+        })
+    } catch (err) {
+        dispatch({
+            type: FORM_ERROR,
+            payload: err
+        })
+    }
+}

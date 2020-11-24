@@ -25,5 +25,6 @@ export const GET_GIGS = 'GET_GIGS';
 export const DELETE_GIG = 'DELETE_GIG';
 export const SET_FORM = 'SET_SIGNUP';
 export const ADD_COMMENT ='ADD_COMMENT';
-export const COMMENT_ERROR = 'COMMENT-ERROR';
+export const COMMENT_ERROR = 'COMMENT_ERROR';
+export const CLEAR_FORM = 'CLEAR_FORM';
 

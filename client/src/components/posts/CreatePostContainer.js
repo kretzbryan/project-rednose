@@ -13,14 +13,14 @@ const CreatePostContainer = () => {
     
     return (
         <Fragment>
-    <div className="create__post">
-        <img src={image} alt="profile thumbnail" className="create__post__thumb" />
-        <a onClick={toggleForm} data-toggle="modal" data-target="#addPostModal" className='create__post__anchor'>
-            <p className='create__post__caption'>Say Something!</p>
-        </a>
-    </div>
-    { formOpen === true && <AddPostForm toggleForm={ toggleForm }/> }
-    </Fragment>
+        <section className="row card create__post">
+            <img src={image} alt="profile thumbnail" className="create__post__thumb" />
+            <a onClick={toggleForm} className='create__post__caption anchor'>
+                <p className='options'>Say Something!</p>
+            </a>
+        </section>
+        { formOpen === true && <AddPostForm toggleForm={ toggleForm }/> }
+        </Fragment>
 )}
 
 export default CreatePostContainer;

@@ -1,4 +1,4 @@
-import { GET_POSTS, ADD_POST, REMOVE_POST, EDIT_POST, POST_ERROR, DELETE_POST, GET_POST} from '../actions/types';
+import { GET_POSTS, ADD_POST, REMOVE_POST, EDIT_POST, POST_ERROR, DELETE_POST, GET_POST, ADD_COMMENT, DELETE_COMMENT, COMMENT_ERROR} from '../actions/types';
 
 const initialState = {
     posts: [],
@@ -9,8 +9,7 @@ const initialState = {
 
 export default function( state = initialState, action) {
     const {type, payload} = action;
-    console.log(`${type}`, payload)
-
+    console.log(type, payload)
     switch(type) {
         case EDIT_POST:
             const updatedPost = state.posts.find(post => post._id === payload._id);
@@ -27,6 +26,16 @@ export default function( state = initialState, action) {
                 posts: [payload, ...state.posts],
                 loading: false
             }
+        case ADD_COMMENT:
+            console.log(payload.post)
+            const updateComments = state.posts.find(post => post._id === payload.post._id)
+            return {
+                ...state,
+                posts: [
+                        {...payload.post},
+                    ...state.posts.filter(post => post !== updateComments)
+                ]
+            };
         case DELETE_POST:
             return {
                 ...state,
@@ -37,7 +46,13 @@ export default function( state = initialState, action) {
             return {
                 ...state,
                 error: payload
-            };
+            }; 
+        case COMMENT_ERROR: 
+            return {
+                ...state,
+                error:payload
+            }
+        
         case GET_POSTS:
             return {
                 ...state,

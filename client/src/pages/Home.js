@@ -13,6 +13,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 import Popup from '../components/Popup';
+import UserCard from '../components/UserCard';
+import GigNav2 from '../components/GigNav2';
+import GigNav1 from '../components/GigNav1';
+import CreatePostContainer from '../components/posts/CreatePostContainer';
+import UserCardMobile from '../components/UserCardMobile';
 
 
 
@@ -24,17 +29,17 @@ const Home = ({ getUserDashboard, getGigs, getPosts, auth, profile }) => {
     }, [])
     
     return (
-            <div className='row dashboard' >
-            <section className="dashboard__column--1">
-                <EditProfileCard />
-                <DashboardNavTwo />
+            <div className='row main__container' >
+                <section className="column-secondary">
+                    <UserCard />
+                    <GigNav2 />
                 </section>
-                <section className="dashboard__column--2">
-                    <UserProfileCard />
+                <section className="column-primary">
+                <UserCardMobile />
                     <PostColumn />
                     </section>
-                <section className='dashboard__column--3'>
-                <GigColumn />
+                <section className='column-tertiary'>
+                <GigNav1 />
                 </section>
                 <Popup />
             </div>

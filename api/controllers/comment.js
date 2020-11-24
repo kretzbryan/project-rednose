@@ -14,20 +14,28 @@ router.post('/', auth, async (req, res) => {
         })
         await newComment.save();
         console.log('newcomment', newComment)
-        if(req.body.postId) {
-            const post = await db.Post.findById(req.body.postId);
-            console.log('foundPost', post)
+            const post = await db.Post.findById(req.body.id);
             await post.comments.push(newComment._id)
             await post.save();
-            res.json(newComment);
-        }
 
-        if(req.body.gigId) {
-            const gig = await db.Gig.findById(req.body.postId);
-            await gig.comments.push(newComment._id)
-            await gig.save();
-            res.json(newComment);
-        }
+            console.log('foundPost', post)
+            res.json({post, newComment});
+
+    } catch (err) {
+        console.log(err);
+    }
+})
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const comment = await db.Comment.findById(req.params.id);
+        const post = await db.Post.findById(comment.post);
+        await post.comments.remove(comment);
+        await post.save();
+        await comment.remove();
+        const posts = db.Post.find({});
+
+        res.json(posts)
     } catch (err) {
         console.log(err);
     }

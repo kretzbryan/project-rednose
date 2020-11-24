@@ -3,14 +3,23 @@ const router = express.Router();
 const db = require('../models');
 const auth = require('../middleware/auth')
 
-router.get('/', (req, res) => {
-    db.Post.find({} ,(err, posts) => {
-        if (err) {
-            res.status(200).json({ message: 'Internal Server Error' })
-        } else {
-            res.status(200).json(posts)
-        }
-    })
+router.get('/', async (req, res) => {
+    try {
+        const posts = await db.Post.find()
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user',
+                model: 'User'
+            }
+        })
+        console.log('allposts', posts)
+        res.status(200).json(posts)
+    } catch (err) {
+        res.status(400)
+    }
+
+    
 })
 
 

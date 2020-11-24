@@ -3,8 +3,16 @@ import { login } from '../actions/auth';
 
 const registerForm = {
     name: 'register',
+    className: 'register-form',
+    values: {
+        username: '',
+        password: ''
+    },
+    buttonText: 'Register',
+    headerValue: 'Sign Up',
     inputs: [
         {
+            key: '0',
             type: 'text',
             placeholder: 'First Name',
             name: 'firstName',
@@ -14,6 +22,7 @@ const registerForm = {
             }
         },
         {
+            key: '1',
             type: 'text',
             placeholder: 'Last Name',
             name: 'lastName',
@@ -23,6 +32,7 @@ const registerForm = {
             }
         },
         {
+            key: '2',
             type: 'text',
             placeholder: 'Username',
             name: 'username',
@@ -32,6 +42,7 @@ const registerForm = {
             }
         },
         {
+            key: '3',
             type: 'email',
             placeholder: 'Email',
             name: 'email',
@@ -41,6 +52,7 @@ const registerForm = {
             }
         },
         {
+            key: '4',
             type: 'password',
             placeholder: 'Password',
             name: 'password1',
@@ -50,6 +62,7 @@ const registerForm = {
             }
         },
         {
+            key: '5',
             type: 'password',
             placeholder: 'Re-type Password',
             name: 'password2',
@@ -69,6 +82,7 @@ const loginForm = {
         password: ''
     },
     buttonText: 'Log In',
+    headerValue: 'Sign In',
     inputs: [
         {
             key: '0',

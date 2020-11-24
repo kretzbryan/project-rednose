@@ -6,23 +6,42 @@ import Footer from '../components/Footer';
 import UserProfileCard from '../components/UserProfileCard';
 import { connect } from 'react-redux';
 import auth from '../actions/auth';
-import profile from '../actions/profile';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import UserCardMobile from '../components/UserCardMobile'
+import { useParams } from 'react-router-dom';
+import {getUserProfile} from '../actions/profile';
+import ProfileCard from '../components/ProfileCard';
+import GigNav1 from '../components/GigNav1';
+import GigNav2 from '../components/GigNav2';
 
 
-const ProfileDetail = ({ auth, profile: { profile } }) => (
-    <div className="row main__container">
-        <UserProfileCard 
-            name={`${profile.user.firstName} ${profile.user.lastName}`} 
-        />
-        <PostColumn posts/>
-        <GigColumn />
-    </div>
-)
+const ProfileDetail = ({ getUserProfile, auth, profile: { profile, loading }}) => {
+    let { id } = useParams();
+
+    useEffect(() => {
+        getUserProfile(id);
+    },[getUserProfile])
+
+    return (
+        <div className="row main__container">
+        <div className="column-secondary">
+        {!loading && <ProfileCard  />}
+        <GigNav2 />
+        </div>
+        <div className="column-primary">
+        <UserCardMobile />
+        </div>
+        <div className="column-tertiary">
+        <GigNav1 />
+        </div>
+    </div>)
+}
 
 ProfileDetail.propTypes = {
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
+    getUserProfile: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -31,4 +50,4 @@ const mapStateToProps = state => ({
     post: state.post
 })
 
-export default connect(mapStateToProps, {})(ProfileDetail);
+export default connect(mapStateToProps, {getUserProfile})(ProfileDetail);

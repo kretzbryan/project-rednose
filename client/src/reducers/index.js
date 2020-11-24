@@ -5,7 +5,6 @@ import profile from './profile';
 import post from './post';
 import gig from './gig';
 import form from './form';
-import comment from './comment';
 
 export default combineReducers({
     alert,
@@ -13,6 +12,5 @@ export default combineReducers({
     profile,
     post,
     gig,
-    form,
-    comment
+    form
 })

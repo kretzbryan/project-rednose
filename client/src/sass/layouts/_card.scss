@@ -1,0 +1,13 @@
+section.card {
+
+    border: none;
+    border-radius: 5px;
+    border: .5px solid rgba($color-black, .3);
+    background-color: $color-offwhite;
+    color: #2b2024;
+    margin: 3rem 1rem;
+    padding: auto;
+    display: inline-block;
+    align-items: center;
+    max-width: 60rem;
+}

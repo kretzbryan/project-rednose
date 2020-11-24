@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ProfileCardText from './ProfileCardText';
 import image from '../../public/images/default.png';
+import PropTypes from 'prop-types';
+import profile from '../reducers/profile';
+import {connect} from 'react-redux';
 
-const ProfileCard = (props) => (
-    <div className="profile__card">
-        <img src={image} alt="" className="profile__image"/>
-        <ProfileCardText text={props.firstName + ' ' + props.lastName} />
-        <ProfileCardText text={props.userLocation} />
-        <ProfileCardText text={props.occupation} />
-    </div>
-)
+const ProfileCard = ({firstName, lastName, location, occupation}) => {
 
-export default ProfileCard;
+    
+    return (
+    <Fragment>
+        <section className="card profile-card">
+            <img src='/images/default.png' alt="" className="profile-card__image"/>
+            <section className="profile-card__info">
+                <ProfileCardText text={firstName + ' ' + lastName} />
+                <ProfileCardText text={location} />
+                <ProfileCardText  className='occupation' text={occupation} />
+            </section>
+        </section>
+    </Fragment>
+)}
+
+
+ProfileCard.propTypes = {
+    profile: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = state => ({
+    profile: state.profile
+})
+
+export default connect(mapStateToProps)(ProfileCard);

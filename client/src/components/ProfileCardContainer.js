@@ -8,13 +8,13 @@ const ProfileCardContainer = ({ profile: { profiles, loading } }) => {
 
     const generateProfileCards = (profiles) => {
         return profiles.map((profile) => {
-             return <ProfileCard key={profile._id} firstName= {profile.firstName} lastName={profile.lastName} userLocation={profile.location || 'Unknown Location'} occupation={profile.occupation || 'Unknown'} />
+             return <ProfileCard key={profile._id} firstName= {profile.firstName} lastName={profile.lastName} location={profile.location || 'Unknown Location'} occupation={profile.occupation || 'Unknown'} />
         })
     }
 
     
     return (
-    <div className="profile__card__container">
+    <div className="row profile-card__container">
         {!loading && generateProfileCards(profiles)}
     </div>
 )}

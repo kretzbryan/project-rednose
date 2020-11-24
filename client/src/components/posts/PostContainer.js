@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PostHeader from './PostHeader';
 import PostContent from './PostContent';
 import PostFooter from './PostFooter';
@@ -7,14 +7,17 @@ import PropTypes from 'prop-types';
 import auth from '../../actions/auth';
 import post from '../../actions/post';
 import EditPostForm from '../forms/EditPostForm';
-import { addPostComment } from '../../actions/comment';
+import CommentContainer from '../CommentContainer';
+import Comment from '../Comment'
 
 
 
 const PostContainer = ({post, loading}) => {
-    const { name, text, _id , user  } = post;
+    const { name, text, _id , user, createdAt, comments } = post;
     const [editPostOpen, setEditPostOpen ] = useState(false);
     const [addCommentOpen, setAddCommentOpen ] = useState(false);
+    const [postComments, setPostComments] = useState([]);
+
     const toggleEditPost = () => {
         setEditPostOpen(!editPostOpen)
     }
@@ -22,21 +25,30 @@ const PostContainer = ({post, loading}) => {
         setAddCommentOpen(!addCommentOpen)
     }
 
-    
+    useEffect(() => {
+        setPostComments(comments)
+    },[])
 
     return (
-        <div className="post">
+        <Fragment>
             {!loading &&
                 <Fragment>
-                    <PostHeader name={name}  post={post}/>
-                    <PostContent text={text} />
-                    <PostFooter id={_id} user={user} toggleEditPost={toggleEditPost}/>
-                </Fragment>}
-        </div>
+                    <section className="row card post__container">
+                        <PostHeader name={name}  post={post} createdAt={createdAt}/>
+                        <PostContent text={text} />
+                        {!loading && post.comments.map(comment => {
+                             return <Comment key={comment._id} comment={comment} loading={loading} />
+                         })}
+                        <PostFooter id={_id} user={user} toggleEditPost={toggleEditPost}/>
+                    </section> 
+                </Fragment>
+            }
+        </Fragment>
 )}
 
 
-export default connect(null, { auth, post, addPostComment })(PostContainer);
+
+export default connect(null, { auth, post})(PostContainer);
 
 /* { !editPostOpen ? (
     <div className="post">
@@ -47,3 +59,4 @@ export default connect(null, { auth, post, addPostComment })(PostContainer);
                     <PostHeader name={name}  />
                     <EditPostForm post={post} toggleEditPost={toggleEditPost} />
                 </div>) } */
+
