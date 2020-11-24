@@ -12,15 +12,11 @@ router.post('/', auth, async (req, res) => {
         name: `${user.firstName} ${user.lastName}`,
         user: user.id
         })
-        await newComment.save();
-        console.log('newcomment', newComment)
+            await newComment.save();
             const post = await db.Post.findById(req.body.id).populate('comments');
             await post.comments.push(newComment)
             await post.save();
-
-            console.log('foundPost', post)
             res.json({post, newComment});
-
     } catch (err) {
         console.log(err);
     }

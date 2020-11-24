@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import TimeAgo from 'react-timeago';
+import ReactTimeAgo from 'react-time-ago';
 
 const Comment = ({comment, loading}) => {
     const { _id, text, name, user, createdAt } = comment;
@@ -18,7 +18,7 @@ const Comment = ({comment, loading}) => {
                 </a>
                 <span className='timestamp' > 
         
-                    <TimeAgo date={createdAt} />
+                    <ReactTimeAgo date={createdAt} locale='en-US'/>
                 </span>
                 </div>
                 <div className="content-options">

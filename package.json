@@ -47,7 +47,7 @@
     "react-moment": "^0.9.7",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-timeago": "^5.2.0",
+    "react-time-ago": "^6.2.1",
     "reactstrap": "^8.5.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
