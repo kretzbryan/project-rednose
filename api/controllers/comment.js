@@ -14,8 +14,8 @@ router.post('/', auth, async (req, res) => {
         })
         await newComment.save();
         console.log('newcomment', newComment)
-            const post = await db.Post.findById(req.body.id);
-            await post.comments.push(newComment._id)
+            const post = await db.Post.findById(req.body.id).populate('comments');
+            await post.comments.push(newComment)
             await post.save();
 
             console.log('foundPost', post)

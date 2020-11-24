@@ -4,7 +4,7 @@ import image from '../../../public/images/default.png';
 import { connect } from 'react-redux';
 import {setEditPost} from '../../actions/form';
 import PropTypes from 'prop-types';
-import ReactTimeAgo from 'react-time-ago'
+import TimeAgo from 'react-timeago'
 
 const PostHeader = ({ name, setEditPost, createdAt}) => (
     <Fragment>
@@ -17,7 +17,7 @@ const PostHeader = ({ name, setEditPost, createdAt}) => (
                     <p className='options'>{name}</p>
                 </a>
                 <span className='timestamp' > 
-                <ReactTimeAgo date={createdAt} locale='en-US' />
+                <TimeAgo date={createdAt}  />
                 </span>
             </div>
 

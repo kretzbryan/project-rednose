@@ -12,7 +12,7 @@ export default function( state = initialState, action) {
     console.log(type, payload)
     switch(type) {
         case EDIT_POST:
-            const updatedPost = state.posts.find(post => post._id === payload._id);
+            constupdatedPost = state.posts.find(post => post._id === payload._id);
             return {
                 ...state,
                 posts: [
@@ -28,12 +28,12 @@ export default function( state = initialState, action) {
             }
         case ADD_COMMENT:
             console.log(payload.post)
-            const updateComments = state.posts.find(post => post._id === payload.post._id)
+            const updatedComments = state.posts.find(post => post._id === payload.post._id)
             return {
                 ...state,
                 posts: [
                         {...payload.post},
-                    ...state.posts.filter(post => post !== updateComments)
+                    ...state.posts.filter(post => post !== updatedComments)
                 ]
             };
         case DELETE_POST:
