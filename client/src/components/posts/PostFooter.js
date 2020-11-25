@@ -21,15 +21,16 @@ const PostFooter = ({ auth , deletePost , loading, user, id, toggleEditPost, add
     const handleSubmit = e => {
         e.preventDefault();
         addPostComment(commentData);
+        setCommentData({
+            ...commentData,
+            text:''
+        })
 
     }
     return (
         <Fragment>
             <div className="row comment-form">
-                <form onSubmit={(e) => {
-                    e.preventDefault();
-                    addPostComment(commentData);
-                }} >
+                <form onSubmit={handleSubmit} >
 
                 <TextareaAutosize className='comment-form__text' type="text" name='text' placeholder='Add a comment...' cols={50} rows={1} value={commentData.text}
                 onChange={handleChange} required />

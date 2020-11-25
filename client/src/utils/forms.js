@@ -142,44 +142,82 @@ const gigForm = {
 }
 
 const userForm = {
-   inputs: [
-       {
+    name: 'userForm',
+    className: 'user-form',
+    values: {
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        username: '',
+        password: ''
+    },
+    buttonText: 'Register',
+    headerValue: 'Sign Up',
+    inputs: [
+        {
+            key: '0',
             type: 'text',
             placeholder: 'First Name',
-            name: 'firstName'
+            name: 'firstName',
+            label: {
+                htmlFor: 'firstName',
+                className: 'login-form__label'
+            }
         },
         {
+            key: '1',
             type: 'text',
             placeholder: 'Last Name',
-            name: 'lastName'
+            name: 'lastName',
+            label: {
+                htmlFor: 'lastName',
+                className: 'login-form__label'
+            }
         },
         {
+            key: '2',
             type: 'text',
             placeholder: 'Username',
-            name: 'username'
+            name: 'username',
+            label: {
+                htmlFor: 'username',
+                className: 'login-form__label'
+            }
         },
         {
+            key: '3',
             type: 'email',
             placeholder: 'Email',
-            name: 'email'
+            name: 'email',
+            label: {
+                htmlFor: 'email',
+                className: 'login-form__label'
+            }
         },
         {
-            type: 'text',
-            placeholder: 'Image Url',
-            name: 'profileImage'
+            key: '4',
+            type: 'password',
+            placeholder: 'Password',
+            name: 'password1',
+            label: {
+                htmlFor: 'password1',
+                className: 'login-form__label'
+            }
         },
         {
-            type: 'text',
-            placeholder: 'Occupation',
-            name: 'occupation'
-        },
-        {
-            type: 'text',
-            placeholder: 'Location',
-            name: 'location'
+            key: '5',
+            type: 'password',
+            placeholder: 'Re-type Password',
+            name: 'password2',
+            label: {
+                htmlFor: 'password2',
+                className: 'login-form__label'
+            }
         }
     ]
 }
+
 
 
 export { registerForm, loginForm, postForm, gigForm, userForm };

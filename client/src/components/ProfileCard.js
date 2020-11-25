@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import profile from '../reducers/profile';
 import {connect} from 'react-redux';
 
-const ProfileCard = ({firstName, lastName, location, occupation}) => {
-
+const ProfileCard = ({profile:{profile}}) => {
+    const {firstName, lastName, location, occupation} = profile;
+    
     
     return (
     <Fragment>

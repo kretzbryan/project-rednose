@@ -71,3 +71,26 @@ export const editGig = ({ title, location, text}) => async dispatch => {
         })
     }
 }
+
+export const getRecentGigs = (num = null) => async dispatch => {
+    try {
+        if( !num ) {
+            const res = await api.get('recent')
+            dispatch({
+                type: GET_GIGS,
+                payload: res.data
+            })
+        } else {
+            const res = await api.get(`recent/${num}`);
+            dispatch({
+                type: GET_GIGS,
+                payload: res.data
+            })
+        }
+    } catch (err) {
+        dispatch({
+            trype: GIG_ERROR,
+            payload: err
+        })
+    }
+}

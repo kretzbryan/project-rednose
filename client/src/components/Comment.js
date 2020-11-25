@@ -1,12 +1,13 @@
 import React, {Fragment} from 'react';
 import ReactTimeAgo from 'react-time-ago';
+import Spinner from './Spinner';
 
 const Comment = ({comment, loading}) => {
     const { _id, text, name, user, createdAt } = comment;
 
     return (
         <Fragment>
-        {!loading && <Fragment>
+        {loading ? (<Spinner />) : (<Fragment>
             <section className="row comment mt-2"> 
             <header className="row profile__header">
                 <div className="comment__thumb">
@@ -46,7 +47,7 @@ const Comment = ({comment, loading}) => {
                 <p>{text}</p>
             </div>
             </section> 
-            </Fragment>}
+            </Fragment>)}
         </Fragment>
     )
 }

@@ -5,6 +5,7 @@ import PostContainer from './PostContainer';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Comment from '../Comment'
+import Spinner from '../Spinner';
 
 
 const PostColumn = ({ profileId, getPosts, post: { posts, loading} }) => {
@@ -12,10 +13,10 @@ const PostColumn = ({ profileId, getPosts, post: { posts, loading} }) => {
     <Fragment>
     <div className="post-section">
         <CreatePostContainer />
-            {!loading && posts.map(post => {
+            {loading ? (<Spinner />) : (posts.map(post => {
                 console.log(post.user)
                 return <PostContainer key={post._id} post={post} loading={loading} />
-            })}
+            }))}
         </div>
     </Fragment>
 )}

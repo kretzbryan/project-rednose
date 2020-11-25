@@ -27,18 +27,20 @@ const ProfileDetail = ({ getUserProfile, getPosts, auth, profile: { profile, loa
 
     return (
         <div className="row main__container">
-        <div className="column-secondary">
-        {!loading && <ProfileCard  />}
-        <GigNav2 />
+            <div className="column-secondary">
+                {!loading && <ProfileCard  />}
+                <GigNav2 />
+            </div>
+            <div className="column-primary">
+                <UserCardMobile />
+                <PostColumn />
+            </div>
+            <div className="column-tertiary">
+                <GigNav1 />
+                <Popup />
+            </div>
         </div>
-        <div className="column-primary">
-        <UserCardMobile />
-        <PostColumn />
-        </div>
-        <div className="column-tertiary">
-        <GigNav1 />
-        </div>
-    </div>)
+    )
 }
 
 ProfileDetail.propTypes = {

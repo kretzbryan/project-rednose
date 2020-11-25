@@ -23,7 +23,7 @@ router.get('/all', auth, async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const foundProfile = await db.User.findById(req.params.id).populate('posts').populate('gigs');
-        res.status(200).json({ profile: foundProfile})
+        res.status(200).json(foundProfile)
     } catch(err) {
         console.log(err)
 }
