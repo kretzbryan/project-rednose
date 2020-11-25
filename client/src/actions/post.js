@@ -22,19 +22,35 @@ export const addPost = (text) => async dispatch => {
     }
 }
 
-export const getPosts = () => async dispatch => {
-    try {
-        const res = await api.get('post');
-        dispatch({
-            type: GET_POSTS,
-            payload: res.data
-        })
-    } catch (err) {
-        dispatch({
-            type: POST_ERROR,
-            payload: err
-        })
+export const getPosts = (profileId= '') => async dispatch => {
+    if (profileId === true) {
+        try {
+            const res = await api.get(`post/user/${profileId}`);
+            dispatch({
+                type: GET_POSTS,
+                payload: res.data
+            })
+        } catch (err) {
+            dispatch({
+                type: POST_ERROR,
+                payload: err
+            })
+        }
+    } else {
+        try {
+            const res = await api.get(`post`);
+            dispatch({
+                type: GET_POSTS,
+                payload: res.data
+            })
+        } catch (err) {
+            dispatch({
+                type: POST_ERROR,
+                payload: err
+            })
+        }
     }
+    
 }
 
 export const deletePost = id => async dispatch => {

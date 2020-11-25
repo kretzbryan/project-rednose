@@ -7,11 +7,7 @@ import { connect } from 'react-redux';
 import Comment from '../Comment'
 
 
-const PostColumn = ({ getPosts, post: { posts, loading} }) => {
-    useEffect(() => {
-        getPosts()
-    }, [])
-
+const PostColumn = ({ profileId, getPosts, post: { posts, loading} }) => {
     return (
     <Fragment>
     <div className="post-section">

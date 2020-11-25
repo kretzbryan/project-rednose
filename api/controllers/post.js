@@ -22,6 +22,22 @@ router.get('/', async (req, res) => {
     
 })
 
+router.get('/user/:id', auth, async (req, res) => {
+    try {
+        const posts = db.Post.find({user : req.params.id})
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user',
+                model: 'User'
+            }
+        });
+        res.json(posts)
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 
 // Creates a post with author id, adds post id to User.posts
 

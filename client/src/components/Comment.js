@@ -10,7 +10,7 @@ const Comment = ({comment, loading}) => {
             <section className="row comment mt-2"> 
             <header className="row profile__header">
                 <div className="comment__thumb">
-                    <img src="images/default.png" alt="profile thumbnail" className="comment__thumb"/>
+                    <img src="/images/default.png" alt="profile thumbnail" className="comment__thumb"/>
                 </div>
                 <div className="poster__name">
                 <a className='anchor' href="/profile/">

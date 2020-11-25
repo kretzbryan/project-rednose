@@ -10,7 +10,7 @@ const PostHeader = ({ name, setEditPost, createdAt}) => (
     <Fragment>
         <header className="row profile__header post__header">
             <div className="poster__thumb">
-                    <img src={image} alt="profile thumbnail" className="image__thumb" />
+                    <img src="/images/default.png" alt="profile thumbnail" className="image__thumb" />
             </div>
             <div className="poster__name">
                 <a className='anchor' href="/profile/">

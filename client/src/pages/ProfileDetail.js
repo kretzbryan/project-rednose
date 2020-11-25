@@ -14,14 +14,16 @@ import {getUserProfile} from '../actions/profile';
 import ProfileCard from '../components/ProfileCard';
 import GigNav1 from '../components/GigNav1';
 import GigNav2 from '../components/GigNav2';
+import { getPosts } from '../actions/post';
 
 
-const ProfileDetail = ({ getUserProfile, auth, profile: { profile, loading }}) => {
+const ProfileDetail = ({ getUserProfile, getPosts, auth, profile: { profile, loading }}) => {
     let { id } = useParams();
 
     useEffect(() => {
         getUserProfile(id);
-    },[getUserProfile])
+        getPosts(id);
+    },[])
 
     return (
         <div className="row main__container">
@@ -31,6 +33,7 @@ const ProfileDetail = ({ getUserProfile, auth, profile: { profile, loading }}) =
         </div>
         <div className="column-primary">
         <UserCardMobile />
+        <PostColumn />
         </div>
         <div className="column-tertiary">
         <GigNav1 />
@@ -41,7 +44,8 @@ const ProfileDetail = ({ getUserProfile, auth, profile: { profile, loading }}) =
 ProfileDetail.propTypes = {
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
-    getUserProfile: PropTypes.func.isRequired
+    getUserProfile: PropTypes.func.isRequired,
+    getPosts: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -50,4 +54,4 @@ const mapStateToProps = state => ({
     post: state.post
 })
 
-export default connect(mapStateToProps, {getUserProfile})(ProfileDetail);
+export default connect(mapStateToProps, {getUserProfile, getPosts})(ProfileDetail);

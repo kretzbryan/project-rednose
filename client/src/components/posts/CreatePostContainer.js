@@ -14,7 +14,7 @@ const CreatePostContainer = () => {
     return (
         <Fragment>
         <section className="row card create__post">
-            <img src={image} alt="profile thumbnail" className="create__post__thumb" />
+            <img src="/images/default.png" alt="profile thumbnail" className="create__post__thumb" />
             <a onClick={toggleForm} className='create__post__caption anchor'>
                 <p className='options'>Say Something!</p>
             </a>
