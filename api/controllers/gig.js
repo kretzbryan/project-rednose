@@ -34,6 +34,43 @@ router.post('/', auth, async (req, res) => {
 
 })
 
+router.get('/recent',  auth, async (req, res) => {
+    try {
+        const recentGigs = await db.Gig.aggregate([
+            {$sort: {createdAt: -1} },
+            {$lookup: {
+                from: 'users',
+                localfield: 'user',
+                foreignField: '_id',
+                as: 'user_doc'
+            }}
+        ]);
+        console.log(recentGigs)
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+
+router.get('/recent/:num',  auth, async (req, res) => {
+    try {
+        const parsedInt = parseInt(req.params.num);
+        const recentGigs = await db.Gig.aggregate([
+            {$sort: {createdAt: -1} },
+            {$limit: parsedInt},
+            {$lookup: {
+                from: 'users',
+                localField: 'user',
+                foreignField: '_id',
+                as: 'user_doc'
+            }}
+        ]);
+        res.json(recentGigs)
+    } catch (err) {
+        console.log(err)
+    }
+})
+
 // Edit
 router.put('/:id', (req, res) => {
     db.Gig.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedGig) => {

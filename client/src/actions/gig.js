@@ -75,13 +75,14 @@ export const editGig = ({ title, location, text}) => async dispatch => {
 export const getRecentGigs = (num = null) => async dispatch => {
     try {
         if( !num ) {
-            const res = await api.get('recent')
+            const res = await api.get('gig/recent')
             dispatch({
                 type: GET_GIGS,
                 payload: res.data
             })
         } else {
-            const res = await api.get(`recent/${num}`);
+            const res = await api.get(`gig/recent/${num}`);
+            console.log('res.data',res.data)
             dispatch({
                 type: GET_GIGS,
                 payload: res.data

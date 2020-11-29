@@ -1,26 +1,23 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types';
 import image from '../../public/images/default.png';
+import { connect } from 'react-redux';
+import { getRecentGigs } from '../actions/gig';
+import GigNavItem from './GigNavItem';
 
-const GigNav1 = () => {
+const GigNav1 = ({ getRecentGigs, gigs, loading }) => {
+    useEffect(() => {
+        getRecentGigs(5)
+    },  [])
+
     return (
         <Fragment>
             <section className="row card gig__container">
             <header className='gig__header'>Recent Gigs</header>
                 <ul className='gig__list' >
-                    <a href="/gig/" className='gig__anchor'>
-                        <li className='gig__list-item' >
-                            <div className="gig__thumb-container">
-                                <img src={image} alt="profile thumbnail" className="gig__thumb" />
-                            </div>
-                            <div className="gig__text">
-                                <p className="gig__title">  This is A Gig Title</p> 
-                                <span className='gig__subtext'>
-                                    24min
-                                </span>
-                            </div>
-                        </li>
-                    </a>
+                    {!loading && gigs.map(gig => {
+                        return <GigNavItem gig={gig} />
+                    })}
                 </ul>
                 <footer className='gig__footer' >
                     <a className='gig__link-all' href="/gigs"> See More </a>
@@ -30,7 +27,16 @@ const GigNav1 = () => {
     )
 }
 
+GigNav1.propTypes = {
+    getRecentGigs: PropTypes.func.isRequired,
+    gigs: PropTypes.array.isRequired,
+    loading: PropTypes.bool,
+}
 
+const mapStateToProps = state => ({
+    loading: state.gig.loading,
+    gigs: state.gig.gigs
+})
 
-export default GigNav1;
+export default connect(mapStateToProps, { getRecentGigs })(GigNav1);
 

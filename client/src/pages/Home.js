@@ -24,7 +24,6 @@ import UserCardMobile from '../components/UserCardMobile';
 const Home = ({ getUserDashboard, getGigs, getPosts, auth, profile }) => {
     useEffect(() => {
         getUserDashboard();
-        getGigs();
         getPosts();
     }, [])
     

@@ -27,7 +27,7 @@ const PostContainer = ({post, loading}) => {
                         {!loading && comments.map(comment => {
                              return <Comment key={comment._id} comment={comment} loading={loading} />
                          })}
-                        <PostFooter id={_id} user={user} toggleEditPost={toggleEditPost}/>
+                        <PostFooter id={_id} user={user} />
                 </Fragment>)
                 
             }
