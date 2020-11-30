@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ProfileCardContainer from './ProfileCardContainer';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getAllProfiles } from '../actions/profile'
+import { getAllProfiles } from '../../actions/profile'
 
 
 

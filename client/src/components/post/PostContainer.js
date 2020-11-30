@@ -7,9 +7,7 @@ import PropTypes from 'prop-types';
 import auth from '../../actions/auth';
 import post from '../../actions/post';
 import EditPostForm from '../forms/EditPostForm';
-import CommentContainer from '../CommentContainer';
-import Comment from '../Comment'
-import Spinner from '../Spinner';
+import Comment from '../comment/Comment';
 import AddPostForm from '../forms/AddPostForm';
 
 

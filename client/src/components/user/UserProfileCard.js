@@ -1,5 +1,4 @@
 import React from  'react';
-import image from '../../public/images/default.png';
 
 const UserProfileCard = () => (
         <div className="dashboard-nav--1">

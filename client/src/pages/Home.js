@@ -1,23 +1,20 @@
 import React, { useEffect } from 'react';
-import GigColumn from '../components/gigs/GigColumn';
-import PostColumn from '../components/posts/PostColumn';
-import EditProfileCard from '../components/profile/EditProfileCard';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import UserProfileCard from '../components/UserProfileCard';
-import DashboardNavTwo from '../components/DashboardNavTwo';
-import { getUserDashboard } from '../actions/profile';
-import { getGigs } from '../actions/gig';
-import { getPosts } from '../actions/post';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Fragment } from 'react';
-import Popup from '../components/Popup';
-import UserCard from '../components/UserCard';
-import GigNav2 from '../components/GigNav2';
-import GigNav1 from '../components/GigNav1';
-import CreatePostContainer from '../components/posts/CreatePostContainer';
-import UserCardMobile from '../components/UserCardMobile';
+
+import { getUserDashboard } from '../actions/profile';
+import { getPosts } from '../actions/post';
+
+
+import Popup from '../components/layout/Popup';
+
+import PostColumn from '../components/post/PostColumn';
+
+import GigNav2 from '../components/gig/GigNav2';
+import GigNav1 from '../components/gig/GigNav1';
+
+import UserCardMobile from '../components/user/UserCardMobile';
+import UserCard from '../components/user/UserCard';
 
 
 
@@ -49,7 +46,6 @@ Home.propTypes = {
     getUserDashboard: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
-    getGigs: PropTypes.func.isRequired,
     getPosts: PropTypes.func.isRequired
 }
 
@@ -58,4 +54,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 })
 
-export default connect(mapStateToProps, { getUserDashboard, getGigs, getPosts } )(Home);
+export default connect(mapStateToProps, { getUserDashboard, getPosts } )(Home);

@@ -27,4 +27,5 @@ export const SET_FORM = 'SET_SIGNUP';
 export const ADD_COMMENT ='ADD_COMMENT';
 export const COMMENT_ERROR = 'COMMENT_ERROR';
 export const CLEAR_FORM = 'CLEAR_FORM';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
 

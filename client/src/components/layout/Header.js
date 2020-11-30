@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { logout } from '../actions/auth'
+import { logout } from '../../actions/auth'
 import React, { useState, Fragment } from 'react';
-import { setLogin, setRegister } from '../actions/form';
+import { setLogin, setRegister } from '../../actions/form';
 import { useEffect } from 'react';
-import {getUserProfile} from '../actions/profile'
+import {getUserProfile} from '../../actions/profile'
 
 
 const Header = ({ auth: { isAuthenticated,loading, user}, logout, setLogin, setRegister, getUserProfile }) => {

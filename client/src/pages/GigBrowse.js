@@ -3,8 +3,8 @@ import React, { Fragment, useEffect } from 'react'
 import {getRecentGigs} from '../actions/gig';
 import { connect } from 'react-redux';
 import auth from '../reducers/auth';
-import UserCard from '../components/UserCard'
-import GigColumn from '../components/GigColumn';
+import UserCard from '../components/user/UserCard'
+import GigColumn from '../components/gig/GigColumn';
 
 const GigBrowse = ({ getRecentGigs, authLoading, user }) => {
 

@@ -1,6 +1,5 @@
 
 import React, { Fragment } from 'react';
-import image from '../../../public/images/default.png';
 import { connect } from 'react-redux';
 import {setEditPost} from '../../actions/form';
 import PropTypes from 'prop-types';

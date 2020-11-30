@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
-import image from '../../public/images/default.png';
 
 const UserCardMobile = () => {
     return (
         <Fragment>
         <section className="card user-card-mobile">
         <section className="user-card-mobile__image-container">
-                <img className="user-card__image" src={image} alt="profile image" />
+                <img className="user-card__image" src='/images/default.png' alt="profile image" />
         </section>
         <section className=" user-card-mobile__nav">
             <div className="user-card-mobile__nav-left">

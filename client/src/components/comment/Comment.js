@@ -1,9 +1,16 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import ReactTimeAgo from 'react-time-ago';
-import Spinner from './Spinner';
+import EditCommentForm from '../forms/EditCommentForm';
+import Spinner from '../layout/Spinner';
 
 const Comment = ({comment, loading}) => {
     const { _id, text, name, user, createdAt } = comment;
+    const [commentFormOpen, setCommentFormOpen ] = useState(false)
+
+    const toggleForm = () => {
+        setCommentFormOpen(!commentFormOpen);
+    }
+
 
     return (
         <Fragment>
@@ -34,7 +41,7 @@ const Comment = ({comment, loading}) => {
                                 <i className="fas fa-trash-alt"></i><span>Delete Comment</span>
                             </li>
                             </a>
-                                <a className='content-options__link' href="#">
+                                <a className='content-options__link' href="#" onClick={toggleForm}>
                                     <li className="content-options__item">
                                         <i className="fas fa-user-edit"></i> <span>Edit Comment</span> 
                                 </li>
@@ -43,9 +50,9 @@ const Comment = ({comment, loading}) => {
                     </nav>
                 </div>
             </header>
-            <div className="comment__text">
+            {!commentFormOpen ? (<div className="comment__text">
                 <p>{text}</p>
-            </div>
+            </div>) : (<EditCommentForm text={text} id={_id}/>)}
             </section> 
             </Fragment>)}
         </Fragment>

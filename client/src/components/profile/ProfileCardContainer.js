@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BrowseProfileCard from './profile/BrowseProfileCard'
+import BrowseProfileCard from './BrowseProfileCard';
 import  { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 

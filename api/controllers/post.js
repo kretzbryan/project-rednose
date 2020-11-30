@@ -3,6 +3,8 @@ const router = express.Router();
 const db = require('../models');
 const auth = require('../middleware/auth')
 
+
+// finds all posts and populates comments/comment users
 router.get('/', async (req, res) => {
     try {
         const posts = await db.Post.find()
@@ -22,6 +24,8 @@ router.get('/', async (req, res) => {
     
 })
 
+
+// Finds post by Id
 router.get('/:id', auth, async (req, res ) => {
     try {
         const post = await db.Post.findById(req.params.id);
@@ -32,6 +36,8 @@ router.get('/:id', auth, async (req, res ) => {
     }
 })
 
+
+// Find posts associated with specific User
 router.get('/user/:id', auth, async (req, res) => {
     try {
         const posts = db.Post.find({user : req.params.id})
@@ -50,8 +56,6 @@ router.get('/user/:id', auth, async (req, res) => {
 
 
 // Creates a post with author id, adds post id to User.posts
-
-
 router.post('/', auth, async (req, res) => {
     try {
         const user = await db.User.findById(req.user.id);
@@ -71,7 +75,7 @@ router.post('/', auth, async (req, res) => {
 } )
 
 
-
+// updates post text
 router.put('/:id', async (req, res) => {
     try {
         const post = await db.Post.findByIdAndUpdate(req.params.id, req.body, {new: true});
@@ -83,7 +87,7 @@ router.put('/:id', async (req, res) => {
 
 
 
-
+// deletes post and comments associated
 router.delete('/:id', auth, async (req, res) => {
     try {
         const post = await db.Post.findById(req.params.id);

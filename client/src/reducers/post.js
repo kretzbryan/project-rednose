@@ -1,4 +1,4 @@
-import { GET_POSTS, ADD_POST, REMOVE_POST, EDIT_POST, POST_ERROR, DELETE_POST, GET_POST, ADD_COMMENT, DELETE_COMMENT, COMMENT_ERROR} from '../actions/types';
+import { GET_POSTS, ADD_POST, REMOVE_POST, EDIT_POST, POST_ERROR, DELETE_POST, GET_POST, ADD_COMMENT, EDIT_COMMENT, DELETE_COMMENT, COMMENT_ERROR} from '../actions/types';
 
 const initialState = {
     posts: [],
@@ -36,6 +36,10 @@ export default function( state = initialState, action) {
                     ...state.posts.filter(post => post !== updatedComments)
                 ]
             };
+        case EDIT_COMMENT:
+            return {
+                ...state
+            }
         case DELETE_POST:
             return {
                 ...state,

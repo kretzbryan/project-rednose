@@ -1,13 +1,13 @@
 import React from 'react';
-import UserProfileCard from '../components/UserProfileCard';
-import ProfileColumn from '../components/ProfileColumn';
-import GigColumn from '../components/gigs/GigColumn';
-import Popup from '../components/Popup';
-import UserCard from '../components/UserCard';
-import GigNav2 from '../components/GigNav2';
-import GigNav1 from '../components/GigNav1';
-import CreatePostContainer from '../components/posts/CreatePostContainer';
-import UserCardMobile from '../components/UserCardMobile';
+import UserProfileCard from '../components/user/UserProfileCard';
+import ProfileColumn from '../components/profile/ProfileColumn';
+import GigColumn from '../components/gig/GigColumn';
+import Popup from '../components/layout/Popup';
+import UserCard from '../components/user/UserCard';
+import GigNav2 from '../components/gig/GigNav2';
+import GigNav1 from '../components/gig/GigNav1';
+import CreatePostContainer from '../components/post/CreatePostContainer';
+import UserCardMobile from '../components/user/UserCardMobile';
 
 
 const Browse = () => (

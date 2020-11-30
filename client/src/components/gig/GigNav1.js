@@ -1,10 +1,9 @@
 import React, { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types';
-import image from '../../public/images/default.png';
 import { connect } from 'react-redux';
-import { getRecentGigs } from '../actions/gig';
+import { getRecentGigs } from '../../actions/gig';
 import GigNavItem from './GigNavItem';
-import Spinner from './Spinner'
+import Spinner from '../layout/Spinner';
 
 const GigNav1 = ({ getRecentGigs, gigs, loading }) => {
     useEffect(() => {

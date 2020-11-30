@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import ProfileCardText from './ProfileCardText';
-import image from '../../public/images/default.png';
 import PropTypes from 'prop-types';
-import profile from '../reducers/profile';
 import {connect} from 'react-redux';
 
 const ProfileCard = ({profile:{profile}}) => {

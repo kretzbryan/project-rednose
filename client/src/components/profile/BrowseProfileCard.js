@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import ProfileCardText from '../ProfileCardText';
+import ProfileCardText from './ProfileCardText';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 

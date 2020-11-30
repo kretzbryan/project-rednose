@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
-import Login from '../components/landing/Login';
 import { connect } from 'react-redux';
-import Form from './forms/Form';
-import { clearForm } from '../actions/form';
+import Form from '../forms/Form';
+import { clearForm } from '../../actions/form';
 
 const Popup = ({ form: { name, headerValue }, clearForm }) => {
     const [formName, setFormName] = useState([]);

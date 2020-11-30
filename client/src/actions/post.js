@@ -1,5 +1,5 @@
 import api from '../utils/api';
-import { ADD_POST, REMOVE_POST, EDIT_POST, POST_ERROR, GET_POST, GET_POSTS, DELETE_POST, ADD_COMMENT, COMMENT_ERROR } from './types';
+import { ADD_POST, REMOVE_POST, EDIT_POST, POST_ERROR, GET_POST, GET_POSTS, DELETE_POST, ADD_COMMENT, COMMENT_ERROR, EDIT_COMMENT } from './types';
 
 export const addPost = (text) => async dispatch => {
     const config = {
@@ -115,6 +115,23 @@ export const addPostComment = ({ text, id }) => async dispatch => {
         const res = await api.post('comment', body, config)
         dispatch({
             type: ADD_COMMENT,
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+            type: COMMENT_ERROR,
+            payload: err
+        })
+    }
+}
+
+export const editPostComment = ({text, id}) => async dispatch => {
+    const body = { text, id };
+
+    try {
+        const res = await api.put(`comment/${id}`, body);
+        dispatch({
+            type: EDIT_COMMENT,
             payload: res.data
         })
     } catch (err) {
