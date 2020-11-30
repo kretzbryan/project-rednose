@@ -91,12 +91,15 @@ router.delete('/:id', auth, async (req, res) => {
         if(post.user.toString() !== req.user.id) {
             return res.status(401).json({ msg: 'User not Authorized' })
         }
-        
         const user = await db.User.findById(req.user.id);
+        await post.comments.forEach(async comment => {
+            await db.Comment.findByIdAndDelete(comment._id);
+        })
         await user.posts.remove(post);
         await user.save();
-        const deletedPost = await post.remove();
-        res.json(deletedPost);
+        await post.remove();
+        res.json(post)
+        
 
     } catch (err) {
         console.log(err)

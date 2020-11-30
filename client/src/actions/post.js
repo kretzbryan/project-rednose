@@ -58,7 +58,7 @@ export const deletePost = id => async dispatch => {
         const res =  await api.delete(`post/${id}`);
         dispatch({
             type: DELETE_POST,
-            payload: id
+            payload: res.data
         })
     } catch (err) {
         dispatch({

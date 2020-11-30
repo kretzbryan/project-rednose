@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import {setEditPost} from '../../actions/form';
 import PropTypes from 'prop-types';
 import ReactTimeAgo from 'react-time-ago'
+import { deletePost } from '../../actions/post';
 
-const PostHeader = ({id, name, setEditPost, createdAt, toggleForm}) => (
+const PostHeader = ({id, name, setEditPost, createdAt, toggleForm, deletePost}) => (
     <Fragment>
         <header className="row profile__header post__header">
             <div className="poster__thumb">
@@ -28,7 +29,9 @@ const PostHeader = ({id, name, setEditPost, createdAt, toggleForm}) => (
                 </label>
                 <nav className="content-options__nav">
                     <ul className="content-options__list">
-                        <a className='content-options__link' href="#" data-target="#delete<%= post._id %>PostModal" data-toggle="modal">
+                        <a className='content-options__link' onClick={(e) => {
+                            e.preventDefault();
+                            deletePost(id)}}>
                         <li className="content-options__item">
                             <i className="fas fa-trash-alt"></i><span>Delete Post</span>
                         </li>
@@ -46,10 +49,11 @@ const PostHeader = ({id, name, setEditPost, createdAt, toggleForm}) => (
 )
 
 PostHeader.propTypes = {
-    setEditPost: PropTypes.func.isRequired
+    setEditPost: PropTypes.func.isRequired,
+    deletePost: PropTypes.func.isRequired
 }
 
-export default connect(null, { setEditPost })(PostHeader);
+export default connect(null, { setEditPost, deletePost })(PostHeader);
 
 /* <div className="col-2 post__header-thumb">
                 <img src={image} alt="" className="image__thumb" />
