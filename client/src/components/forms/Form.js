@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { register, login } from '../../actions/auth';
 import { addPost, deletePost, editPost,addPostComment  } from '../../actions/post';
+import { clearForm } from '../../actions/form';
 
 
-const Form = ({ isAuthenticated, form: { inputs, values, className, buttonText, name  }, login, register}) => {
-        const [ formInputs, setFormInputs ] = useState([]);
+const Form = ({ isAuthenticated, form: {loading, textAreas, inputs, values, className, buttonText, name  }, login, register}) => {
         const [ formValues, setFormValues ] = useState({});
         
 
@@ -27,11 +27,11 @@ const Form = ({ isAuthenticated, form: { inputs, values, className, buttonText, 
         name === 'deletePost' && deletePost(formValues);
         name === 'editPost' && editPost(formValues);
         name == 'addPostComment' && addPostComment(formValues);
+        clearForm();
 
     }
 
     useEffect(()=> {
-        setFormInputs([...inputs]);
         setFormValues({
             ...values
         })
@@ -44,7 +44,7 @@ const Form = ({ isAuthenticated, form: { inputs, values, className, buttonText, 
     return (
         <Fragment>
             <form onSubmit={onSubmit} method='POST' className={`form ${className}`} autoComplete='off'>
-                {formInputs && formInputs.map( input => {
+                {!loading && inputs && inputs.map( input => {
                     const { key, className, type, placeholder, name, label } = input;
                     
 
@@ -57,10 +57,13 @@ const Form = ({ isAuthenticated, form: { inputs, values, className, buttonText, 
                                 </div>
                         ) : (
                             <div key={ key } className={className + "__group form__group"}>
-                                <input type={type} placeholder={placeholder} name={name} />
+                                <input type={type} placeholder={placeholder} name={name} onChange={handleChange}/>
                             </div>
                         )
                     )
+                })}
+                {textAreas && textAreas.map( area => {
+                    return <textarea name={area.name}  key={area.key} cols={area.cols} rows={area.rows} onChange={handleChange}>{area.value}</textarea>
                 })}
                 <button type="submit" className={`btn btn-primary ${className}__button`}>{buttonText}</button>
             </form>

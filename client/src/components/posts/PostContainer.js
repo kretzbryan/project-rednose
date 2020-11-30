@@ -10,11 +10,19 @@ import EditPostForm from '../forms/EditPostForm';
 import CommentContainer from '../CommentContainer';
 import Comment from '../Comment'
 import Spinner from '../Spinner';
+import AddPostForm from '../forms/AddPostForm';
 
 
 
 const PostContainer = ({post, loading}) => {
     const { name, text, _id , user, createdAt, comments } = post;
+    const [formOpen, setFormOpen] = useState(false);
+
+    const toggleForm = () => {
+        setFormOpen(!formOpen);
+    }
+
+
 
 
     return (
@@ -22,12 +30,13 @@ const PostContainer = ({post, loading}) => {
         <section className="row card post__container">
             {!loading &&  (
                 <Fragment>
-                        <PostHeader name={name}  post={post} createdAt={createdAt}/>
-                        <PostContent text={text} />
-                        {!loading && comments.map(comment => {
-                             return <Comment key={comment._id} comment={comment} loading={loading} />
-                         })}
-                        <PostFooter id={_id} user={user} />
+                    <PostHeader name={name} id={_id} post={post} createdAt={createdAt} toggleForm={toggleForm}/>
+                    {formOpen ? (
+                        <EditPostForm post={post} toggleForm={toggleForm} />) : <PostContent text={text} />}
+                    {!loading && comments.map(comment => {
+                            return <Comment key={comment._id} comment={comment} loading={loading} />
+                        })}
+                    <PostFooter id={_id} user={user} />
                 </Fragment>)
                 
             }

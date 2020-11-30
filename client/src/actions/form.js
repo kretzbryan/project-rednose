@@ -1,5 +1,6 @@
 import { SET_FORM, FORM_ERROR, CLEAR_FORM } from './types';
 import { registerForm, loginForm, postForm, gigForm, userForm } from '../utils/forms';
+import api from '../utils/api';
 
 export const setLogin = () => async dispatch => {
     try {
@@ -29,11 +30,17 @@ export const setRegister = () => async dispatch => {
     }
 }
 
-export const setEditPost = () => async dispatch => {
+export const setEditPost = (id) => async dispatch => {
     try {
+        const res = await api.get(`post/${id}`)
         dispatch({
             type: SET_FORM,
-            payload: 'editPost'
+            payload:{ 
+                ...postForm,
+                values: {
+                    text: res.data.text
+                }
+            }
         })
     } catch (err) {
         dispatch({

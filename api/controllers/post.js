@@ -22,6 +22,16 @@ router.get('/', async (req, res) => {
     
 })
 
+router.get('/:id', auth, async (req, res ) => {
+    try {
+        const post = await db.Post.findById(req.params.id);
+        console.log(post)
+        res.json(post);
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 router.get('/user/:id', auth, async (req, res) => {
     try {
         const posts = db.Post.find({user : req.params.id})
@@ -61,15 +71,16 @@ router.post('/', auth, async (req, res) => {
 } )
 
 
-router.put('/:id', (req, res) => {
-    db.Post.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedPost) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect('/home');
-        }
-    })
+
+router.put('/:id', async (req, res) => {
+    try {
+        const post = await db.Post.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.json(post)
+    } catch (err) {
+        console.log(err)
+    }
 })
+
 
 
 

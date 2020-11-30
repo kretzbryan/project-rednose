@@ -4,6 +4,7 @@ import image from '../../public/images/default.png';
 import { connect } from 'react-redux';
 import { getRecentGigs } from '../actions/gig';
 import GigNavItem from './GigNavItem';
+import Spinner from './Spinner'
 
 const GigNav1 = ({ getRecentGigs, gigs, loading }) => {
     useEffect(() => {
@@ -16,11 +17,11 @@ const GigNav1 = ({ getRecentGigs, gigs, loading }) => {
             <header className='gig__header'>Recent Gigs</header>
                 <ul className='gig__list' >
                     {!loading && gigs.map(gig => {
-                        return <GigNavItem gig={gig} />
+                        return <GigNavItem key={gig._id} gig={gig} />
                     })}
                 </ul>
                 <footer className='gig__footer' >
-                    <a className='gig__link-all' href="/gigs"> See More </a>
+                    <a className='gig__link-all' href="/gig"> See More </a>
                 </footer>
             </section>
         </Fragment>

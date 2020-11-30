@@ -6,6 +6,7 @@ import Home from '../pages/Home';
 import ProfileDetail from '../pages/ProfileDetail';
 import Browse from '../pages/Browse';
 import PrivateRoute from '../components/routing/PrivateRoute';
+import GigBrowse from '../pages/GigBrowse'
 
 const Routes = () => {
     return (
@@ -14,6 +15,7 @@ const Routes = () => {
             <PrivateRoute path ='/home' component={ Home } />
             <PrivateRoute path ='/profile/:id' component={ ProfileDetail } />
             <PrivateRoute path ='/browse' component={ Browse } />
+            <PrivateRoute path ='/gig' component={ GigBrowse } />
         </Switch>
 )}
 

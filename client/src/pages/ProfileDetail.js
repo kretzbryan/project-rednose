@@ -15,6 +15,7 @@ import ProfileCard from '../components/ProfileCard';
 import GigNav1 from '../components/GigNav1';
 import GigNav2 from '../components/GigNav2';
 import { getPosts } from '../actions/post';
+import Popup from '../components/Popup';
 
 
 const ProfileDetail = ({ getUserProfile, getPosts, auth, profile: { profile, loading }}) => {

@@ -12,7 +12,7 @@ export default function( state = initialState, action) {
     console.log(type, payload)
     switch(type) {
         case EDIT_POST:
-            constupdatedPost = state.posts.find(post => post._id === payload._id);
+            const updatedPost = state.posts.find(post => post._id === payload._id);
             return {
                 ...state,
                 posts: [

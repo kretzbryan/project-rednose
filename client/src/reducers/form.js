@@ -1,4 +1,4 @@
-import { SET_FORM, FORM_ERROR, CLEAR_FORM } from '../actions/types'
+import { SET_FORM, FORM_ERROR, CLEAR_FORM, SET_EDIT } from '../actions/types'
 
 const initialState = {
     name: '',
@@ -6,8 +6,10 @@ const initialState = {
     buttonText: '',
     headerValue: '',
     inputs: [],
+    textAreas: [],
     values: {},
-    error: {}
+    error: {},
+    loading: true
 }
 
 export default function (state= initialState, action) {
@@ -21,8 +23,10 @@ export default function (state= initialState, action) {
                 className: '',
                 buttonText: '',
                 inputs: [],
+                textAreas: [],
                 values: {},
-                error: {}
+                error: {},
+                loading: true
             }
         case SET_FORM:
             return {
@@ -32,7 +36,9 @@ export default function (state= initialState, action) {
                 buttonText: payload.buttonText,
                 headerValue: payload.headerValue,
                 inputs: payload.inputs,
-                values: payload.values
+                textAreas: payload.textAreas,
+                values: payload.values,
+                loading: false
             }
         case FORM_ERROR: 
             return {

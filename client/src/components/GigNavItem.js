@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ReactTimeAgo from 'react-time-ago';
 
 const GigNavItem = ({gig}) => {
     return (
@@ -12,7 +12,7 @@ const GigNavItem = ({gig}) => {
                     <div className="gig__text">
                         <p className="gig__title">  {gig.title}</p> 
                         <span className='gig__subtext'>
-                            24min
+                            <ReactTimeAgo date={gig.createdAt} locale='en-US' />
                         </span>
                     </div>
                 </li>

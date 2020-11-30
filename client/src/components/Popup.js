@@ -17,7 +17,7 @@ const Popup = ({ form: { name, headerValue }, clearForm }) => {
 
 
     return (
-        <div className='popup' id={formName}>
+        <div className='popup' id={name}>
             <div className="popup__content">
                 <div className="popup__header">
                     <a href="#" className="popup__close" onClick={() => clearForm() }>&times;</a>

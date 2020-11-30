@@ -40,12 +40,12 @@ router.get('/recent',  auth, async (req, res) => {
             {$sort: {createdAt: -1} },
             {$lookup: {
                 from: 'users',
-                localfield: 'user',
+                localField: 'user',
                 foreignField: '_id',
                 as: 'user_doc'
             }}
         ]);
-        console.log(recentGigs)
+        res.json(recentGigs);
     } catch (err) {
         console.log(err)
     }

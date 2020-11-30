@@ -6,7 +6,7 @@ import {setEditPost} from '../../actions/form';
 import PropTypes from 'prop-types';
 import ReactTimeAgo from 'react-time-ago'
 
-const PostHeader = ({ name, setEditPost, createdAt}) => (
+const PostHeader = ({id, name, setEditPost, createdAt, toggleForm}) => (
     <Fragment>
         <header className="row profile__header post__header">
             <div className="poster__thumb">
@@ -33,7 +33,7 @@ const PostHeader = ({ name, setEditPost, createdAt}) => (
                             <i className="fas fa-trash-alt"></i><span>Delete Post</span>
                         </li>
                         </a>
-                        <a className='content-options__link' href="#" onClick={setEditPost}>
+                        <a className='content-options__link' href="#postForm" onClick={toggleForm}>
                         <li className="content-options__item">
                             <i className="fas fa-user-edit"></i> <span>Edit Post</span> 
                         </li>

@@ -71,7 +71,8 @@ const registerForm = {
                 className: 'login-form__label'
             }
         }
-    ]
+    ],
+    textAreas: null
 }
 
 const loginForm = {
@@ -85,7 +86,7 @@ const loginForm = {
     headerValue: 'Sign In',
     inputs: [
         {
-            key: '0',
+            key: '6',
             type: 'text',
             placeholder: 'Username',
             name: 'username',
@@ -96,9 +97,8 @@ const loginForm = {
             }
         },
         {
-            key: '1',
+            key: '7',
             type: 'password',
-            value: null,
             placeholder: 'password',
             name: 'password',
             className: 'login-form__input',
@@ -106,16 +106,22 @@ const loginForm = {
                 htmlFor: 'location',
                 className: 'login-form__label'
             }
-        }]
+        }],
+        textAreas: null
 }
 
 const postForm = {
-    name: 'addpost',
-    inputs: {
-        type: 'text',
-        placeholder: 'Say Something...',
-        name: 'content'
-    }
+    name: 'postForm',
+    values: {
+        text: ''
+    },
+    textAreas: [{
+        key: '8',
+        name: 'text',
+        cols: '45',
+        rows: '7'
+    }],
+    inputs: null
 }
 
 const gigForm = {
@@ -138,7 +144,8 @@ const gigForm = {
             placeholder: 'Description',
             name: 'description'
         }
-    ]
+    ],
+    textAreas: null
 }
 
 const userForm = {
@@ -215,7 +222,8 @@ const userForm = {
                 className: 'login-form__label'
             }
         }
-    ]
+    ],
+    textAreas: null
 }
 
 

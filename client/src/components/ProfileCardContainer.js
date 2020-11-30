@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ProfileCard from './ProfileCard';
+import BrowseProfileCard from './profile/BrowseProfileCard'
 import  { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -8,7 +8,7 @@ const ProfileCardContainer = ({ profile: { profiles, loading } }) => {
 
     const generateProfileCards = (profiles) => {
         return profiles.map((profile) => {
-             return <ProfileCard key={profile._id} firstName= {profile.firstName} lastName={profile.lastName} location={profile.location || 'Unknown Location'} occupation={profile.occupation || 'Unknown'} />
+             return <BrowseProfileCard key={profile._id} firstName= {profile.firstName} lastName={profile.lastName} location={profile.location || 'Unknown Location'} occupation={profile.occupation || 'Unknown'} />
         })
     }
 
