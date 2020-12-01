@@ -4,25 +4,9 @@ const db = require('../models');
 const auth = require('../middleware/auth');
 
 
-router.post('/', auth, async (req, res) => {
-    try {
-        const user = await db.User.findById(req.user.id)
-        const newComment = new db.Comment({
-        text: req.body.text,
-        name: `${user.firstName} ${user.lastName}`,
-        user: user.id
-        })
-            await newComment.save();
-            const post = await db.Post.findById(req.body.id).populate('comments');
-            await post.comments.push(newComment)
-            await post.save();
-            res.json({post, newComment});
-    } catch (err) {
-        console.log(err);
-    }
-})
 
-router.put('/id', auth, async (req, res) => {
+
+router.put('/:id', auth, async (req, res) => {
     try {
         const comment = await db.Comment.findOneAndUpdate({_id: req.params.id}, {text: req.body.text}, {new: true});
         res.json(comment);

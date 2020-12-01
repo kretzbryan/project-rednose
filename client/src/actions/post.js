@@ -109,10 +109,10 @@ export const addPostComment = ({ text, id }) => async dispatch => {
             'Content-Type': 'application/json'
         }
     }
-    const body = { text, id };
+    const body = { text };
 
     try {
-        const res = await api.post('comment', body, config)
+        const res = await api.post(`post/${id}/comment`, body, config)
         dispatch({
             type: ADD_COMMENT,
             payload: res.data
@@ -125,11 +125,12 @@ export const addPostComment = ({ text, id }) => async dispatch => {
     }
 }
 
-export const editPostComment = ({text, id}) => async dispatch => {
-    const body = { text, id };
+export const editPostComment = ({text, postId, commentId}) => async dispatch => {
+    const body = { text };
 
     try {
-        const res = await api.put(`comment/${id}`, body);
+        const res = await api.put(`post/${postId}/comment/${commentId}`, body);
+        console.log('editpost res', res)
         dispatch({
             type: EDIT_COMMENT,
             payload: res.data

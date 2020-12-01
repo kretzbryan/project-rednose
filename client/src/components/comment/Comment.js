@@ -3,7 +3,7 @@ import ReactTimeAgo from 'react-time-ago';
 import EditCommentForm from '../forms/EditCommentForm';
 import Spinner from '../layout/Spinner';
 
-const Comment = ({comment, loading}) => {
+const Comment = ({comment, loading, postId}) => {
     const { _id, text, name, user, createdAt } = comment;
     const [commentFormOpen, setCommentFormOpen ] = useState(false)
 
@@ -30,8 +30,8 @@ const Comment = ({comment, loading}) => {
                 </span>
                 </div>
                 <div className="content-options">
-                    <input type="checkbox" className="content-options__checkbox" id='option-toggle<%= comment._id %>' />
-                    <label htmlFor="option-toggle<%= comment._id %>">
+                    <input type="checkbox" className="content-options__checkbox" id={`option-toggle${_id}`} />
+                    <label htmlFor={`option-toggle${_id}`}>
                         <i className="fa fa-cog options user-options" aria-hidden="true" ></i>
                     </label>
                     <nav className="content-options__nav">
@@ -52,7 +52,7 @@ const Comment = ({comment, loading}) => {
             </header>
             {!commentFormOpen ? (<div className="comment__text">
                 <p>{text}</p>
-            </div>) : (<EditCommentForm text={text} id={_id}/>)}
+            </div>) : (<EditCommentForm text={text} commentId={_id} postId={postId} toggleForm={toggleForm}/>)}
             </section> 
             </Fragment>)}
         </Fragment>

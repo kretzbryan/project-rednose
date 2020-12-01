@@ -9,10 +9,11 @@ const initialState = {
 
 export default function( state = initialState, action) {
     const {type, payload} = action;
-    console.log(type, payload)
+    console.log(type, payload);
+    let updatedPost;
     switch(type) {
         case EDIT_POST:
-            const updatedPost = state.posts.find(post => post._id === payload._id);
+            updatedPost = state.posts.find(post => post._id === payload._id);
             return {
                 ...state,
                 posts: [
@@ -28,18 +29,24 @@ export default function( state = initialState, action) {
             }
         case ADD_COMMENT:
             console.log(payload.post)
-            const updatedComments = state.posts.find(post => post._id === payload.post._id)
+            updatedPost = state.posts.find(post => post._id === payload.post._id)
             return {
                 ...state,
                 posts: [
                         {...payload.post},
-                    ...state.posts.filter(post => post !== updatedComments)
+                    ...state.posts.filter(post => post !== updatedPost)
                 ]
             };
         case EDIT_COMMENT:
+            console.log(payload.post)
+            updatedPost = state.posts.find(post => post._id === payload.post._id)
             return {
-                ...state
-            }
+                ...state,
+                posts: [
+                        {...payload.post},
+                    ...state.posts.filter(post => post !== updatedPost)
+                ]
+            };
         case DELETE_POST:
             return {
                 ...state,

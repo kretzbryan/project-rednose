@@ -32,7 +32,7 @@ const PostContainer = ({post, loading}) => {
                     {formOpen ? (
                         <EditPostForm post={post} toggleForm={toggleForm} />) : <PostContent text={text} />}
                     {!loading && comments.map(comment => {
-                            return <Comment key={comment._id} comment={comment} loading={loading} />
+                            return <Comment key={comment._id} comment={comment} loading={loading} postId={post._id}/>
                         })}
                     <PostFooter id={_id} user={user} />
                 </Fragment>)

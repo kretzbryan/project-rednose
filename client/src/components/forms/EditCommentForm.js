@@ -5,10 +5,11 @@ import { editPostComment } from '../../actions/post';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const EditCommentForm = ({text, id, editPostComment}) => {
+const EditCommentForm = ({text, commentId, postId, editPostComment, toggleForm}) => {
     const [commentData, setCommentData] = useState({
         text,
-        id
+        commentId,
+        postId
     })
 
 
@@ -20,8 +21,9 @@ const EditCommentForm = ({text, id, editPostComment}) => {
     }
 
     const onSubmit = (e) => {
-        e.preventDefault;
+        e.preventDefault();
         editPostComment(commentData);
+        toggleForm();
     }
     return (
         <div>

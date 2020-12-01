@@ -55,6 +55,7 @@ router.get('/user/:id', auth, async (req, res) => {
 })
 
 
+
 // Creates a post with author id, adds post id to User.posts
 router.post('/', auth, async (req, res) => {
     try {
@@ -74,12 +75,41 @@ router.post('/', auth, async (req, res) => {
     }
 } )
 
+router.post('/:id/comment', auth, async (req, res) => {
+    try {
+        const user = await db.User.findById(req.user.id)
+        const newComment = new db.Comment({
+        text: req.body.text,
+        name: `${user.firstName} ${user.lastName}`,
+        user: user.id
+        })
+            await newComment.save();
+            const post = await db.Post.findById(req.params.id).populate('comments');
+            await post.comments.push(newComment)
+            await post.save();
+            res.json({post, newComment});
+    } catch (err) {
+        console.log(err);
+    }
+})
+
+router.put('/:postid/comment/:commentid', auth, async (req, res) => {
+    try {
+        await db.Comment.findOneAndUpdate({_id: req.params.commentid}, {text: req.body.text}, {new: true});
+        await db.Comment.findById(req.params.commentid);
+        const post = await db.Post.findById(req.params.postid).populate('comments');
+        console.log(post)
+        res.json({post});
+    } catch (err) {
+        console.log(err)
+    }
+})
 
 // updates post text
 router.put('/:id', async (req, res) => {
     try {
         const post = await db.Post.findByIdAndUpdate(req.params.id, req.body, {new: true});
-        res.json(post)
+        res.json({post})
     } catch (err) {
         console.log(err)
     }
