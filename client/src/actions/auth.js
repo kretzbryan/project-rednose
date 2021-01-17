@@ -25,14 +25,14 @@ export const loadUser = () => async dispatch => {
 }
 
 
-export const register = ({ firstName, lastName, username, email, password }) => async dispatch => {
+export const register = ({ firstName, lastName, username, email, password, password2 }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     }
 
-    const body = JSON.stringify({ firstName, lastName, username, email, password });
+    const body = JSON.stringify({ firstName, lastName, username, email, password, password2 });
 
     try {
         const res = await api.post('register', body, config);

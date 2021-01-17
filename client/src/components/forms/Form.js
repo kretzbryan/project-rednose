@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { register, login } from '../../actions/auth';
 import { addPost, deletePost, editPost,addPostComment  } from '../../actions/post';
+import {addGig} from '../../actions/gig'
 import { clearForm } from '../../actions/form';
 
 
-const Form = ({ isAuthenticated, form: {loading, textAreas, inputs, values, className, buttonText, name  }, login, register}) => {
+const Form = ({ isAuthenticated, form: {loading, textAreas, inputs, values, className, buttonText, name  }, login, register, addGig, clearForm}) => {
         const [ formValues, setFormValues ] = useState({});
         
 
@@ -26,9 +27,8 @@ const Form = ({ isAuthenticated, form: {loading, textAreas, inputs, values, clas
         name === 'addPost' && addPost(formValues);
         name === 'deletePost' && deletePost(formValues);
         name === 'editPost' && editPost(formValues);
+        name === 'gigForm' && addGig(formValues);
         name == 'addPostComment' && addPostComment(formValues);
-        clearForm();
-
     }
 
     useEffect(()=> {
@@ -74,7 +74,9 @@ const Form = ({ isAuthenticated, form: {loading, textAreas, inputs, values, clas
 Form.propTypes = {
     login: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
+    addGig: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+    clearForm: PropTypes.func.isRequired
 }
 
 
@@ -83,4 +85,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, {login, register })(Form)
+export default connect(mapStateToProps, {login, register, addGig, clearForm })(Form)

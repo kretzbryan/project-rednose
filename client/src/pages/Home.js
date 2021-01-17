@@ -37,7 +37,6 @@ const Home = ({ getUserDashboard, getGigs, getPosts, auth, profile }) => {
                 <section className='column-tertiary'>
                 <GigNav1 />
                 </section>
-                <Popup />
             </div>
         )
 }

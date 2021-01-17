@@ -13,7 +13,6 @@ const PostColumn = ({ profileId, getPosts, post: { posts, loading} }) => {
     <div className="post-section">
         <CreatePostContainer />
             {loading ? (<Spinner />) : (posts.map(post => {
-                console.log(post.user)
                 return <PostContainer key={post._id} post={post} loading={loading} />
             }))}
         </div>

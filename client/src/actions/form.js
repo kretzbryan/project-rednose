@@ -30,6 +30,20 @@ export const setRegister = () => async dispatch => {
     }
 }
 
+export const setAddGig = () => async dispatch => {
+    try {
+        dispatch({
+            type: SET_FORM,
+            payload: gigForm
+        })
+    } catch (err) {
+        dispatch({
+            type: FORM_ERROR,
+            payload: err
+        })
+    }
+}
+
 export const setEditPost = (id) => async dispatch => {
     try {
         const res = await api.get(`post/${id}`)

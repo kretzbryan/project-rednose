@@ -6,14 +6,7 @@ const auth = require('../middleware/auth');
 
 
 
-router.put('/:id', auth, async (req, res) => {
-    try {
-        const comment = await db.Comment.findOneAndUpdate({_id: req.params.id}, {text: req.body.text}, {new: true});
-        res.json(comment);
-    } catch (err) {
-        console.log(err)
-    }
-})
+
 
 router.delete('/:id', async (req, res) => {
     try {

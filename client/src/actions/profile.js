@@ -49,3 +49,26 @@ export const getAllProfiles = () => async dispatch => {
         })
     }
 }
+
+export const editProfileImage = (file) => async dispatch => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const config = {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    }
+
+    try {
+        const res = await api.put('profile/image/', formData, config);
+        dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+        type: PROFILE_ERROR,
+        payload:err
+    })
+    }
+}

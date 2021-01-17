@@ -1,5 +1,5 @@
 import api from '../utils/api';
-import { ADD_POST, REMOVE_POST, EDIT_POST, POST_ERROR, GET_POST, GET_POSTS, DELETE_POST, ADD_COMMENT, COMMENT_ERROR, EDIT_COMMENT } from './types';
+import { ADD_POST, EDIT_POST, POST_ERROR, GET_POST, GET_POSTS, DELETE_POST, HANDLE_COMMENT, COMMENT_ERROR } from './types';
 
 export const addPost = (text) => async dispatch => {
     const config = {
@@ -22,9 +22,10 @@ export const addPost = (text) => async dispatch => {
     }
 }
 
-export const getPosts = (profileId= '') => async dispatch => {
+export const getPosts = (profileId= null) => async dispatch => {
     if (profileId === true) {
         try {
+            console.log('post by user')
             const res = await api.get(`post/user/${profileId}`);
             dispatch({
                 type: GET_POSTS,
@@ -38,6 +39,7 @@ export const getPosts = (profileId= '') => async dispatch => {
         }
     } else {
         try {
+            console.log('all posts ')
             const res = await api.get(`post`);
             dispatch({
                 type: GET_POSTS,
@@ -50,6 +52,24 @@ export const getPosts = (profileId= '') => async dispatch => {
             })
         }
     }
+    
+}
+export const getUserPosts = (profileId) => async dispatch => {
+    
+        try {
+            console.log('post by user')
+            const res = await api.get(`post/user/${profileId}`);
+            dispatch({
+                type: GET_POSTS,
+                payload: res.data
+            })
+        } catch (err) {
+            dispatch({
+                type: POST_ERROR,
+                payload: err
+            })
+        }
+ 
     
 }
 
@@ -68,7 +88,7 @@ export const deletePost = id => async dispatch => {
     }
 }
 
-export const getCurrentPost = ( id ) => async dispatch => {
+export const getPost = ( id ) => async dispatch => {
     try {
 
         const res = await api.get(`post/${id}`)
@@ -114,7 +134,7 @@ export const addPostComment = ({ text, id }) => async dispatch => {
     try {
         const res = await api.post(`post/${id}/comment`, body, config)
         dispatch({
-            type: ADD_COMMENT,
+            type: HANDLE_COMMENT,
             payload: res.data
         })
     } catch (err) {
@@ -132,7 +152,7 @@ export const editPostComment = ({text, postId, commentId}) => async dispatch => 
         const res = await api.put(`post/${postId}/comment/${commentId}`, body);
         console.log('editpost res', res)
         dispatch({
-            type: EDIT_COMMENT,
+            type: HANDLE_COMMENT,
             payload: res.data
         })
     } catch (err) {
@@ -143,12 +163,12 @@ export const editPostComment = ({text, postId, commentId}) => async dispatch => 
     }
 }
 
-export const deletePostComment = (id) => async dispatch => {
+export const deletePostComment = (postId, commentId) => async dispatch => {
     try {
-        const res = await api.delete(`comment/${id}`);
+        const res = await api.delete(`post/${postId}/comment/${commentId}`);
 
         dispatch({
-            type: DELETE_COMMENT,
+            type: HANDLE_COMMENT,
             payload: res.data
         })
     } catch (err) {

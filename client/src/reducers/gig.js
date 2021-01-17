@@ -1,9 +1,9 @@
-import { ADD_GIG, GET_GIGS, GIG_ERROR, DELETE_GIG, EDIT_GIG } from '../actions/types';
+import { ADD_GIG, GET_GIGS, GET_GIG, GIG_ERROR, DELETE_GIG, EDIT_GIG } from '../actions/types';
 
 const initialState = {
     gigs: [],
     gig: null,
-    loading: null,
+    loading: true,
     error: {}
 }
 
@@ -14,7 +14,7 @@ export default function( state = initialState, action ) {
         case ADD_GIG:
             return {
                 ...state,
-                gigs: [payload, ...state.gigs],
+                gigs: [payload.gig, ...state.gigs],
                 loading: false
             }
         case DELETE_GIG:
@@ -27,6 +27,12 @@ export default function( state = initialState, action ) {
             return {
                 ...state,
                 gigs: [...payload],
+                loading: false
+            }
+        case GET_GIG:
+            return {
+                ...state,
+                gig: payload,
                 loading: false
             }
         case GIG_ERROR:

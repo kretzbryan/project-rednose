@@ -1,14 +1,22 @@
 import React, {Fragment, useState} from 'react';
 import ReactTimeAgo from 'react-time-ago';
+import { deletePostComment } from '../../actions/post';
 import EditCommentForm from '../forms/EditCommentForm';
 import Spinner from '../layout/Spinner';
+import { connect } from  'react-redux';
+import PropTypes from 'prop-types';
 
-const Comment = ({comment, loading, postId}) => {
+const Comment = ({comment, loading, postId, deletePostComment}) => {
     const { _id, text, name, user, createdAt } = comment;
     const [commentFormOpen, setCommentFormOpen ] = useState(false)
 
     const toggleForm = () => {
         setCommentFormOpen(!commentFormOpen);
+    }
+
+    const handleCommentDelete = (e) => {
+        e.preventDefault();
+        deletePostComment(postId, _id)
     }
 
 
@@ -36,7 +44,7 @@ const Comment = ({comment, loading, postId}) => {
                     </label>
                     <nav className="content-options__nav">
                         <ul className="content-options__list">
-                            <a className='content-options__link' href="#" data-target="#delete<%= comment._id %>CommentModal" data-toggle="modal">
+                            <a className='content-options__link' href="#" onClick={handleCommentDelete} >
                             <li className="content-options__item">
                                 <i className="fas fa-trash-alt"></i><span>Delete Comment</span>
                             </li>
@@ -59,7 +67,11 @@ const Comment = ({comment, loading, postId}) => {
     )
 }
 
-export default Comment;
+Comment.propTypes = {
+    deletePostComment: PropTypes.func.isRequired
+}
+
+export default connect(null, {deletePostComment})(Comment);
 
 
 

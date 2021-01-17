@@ -5,8 +5,12 @@ const registerForm = {
     name: 'register',
     className: 'register-form',
     values: {
+        firstName: '',
+        lastName: '',
         username: '',
-        password: ''
+        email: '',
+        password: '',
+        password2: ''
     },
     buttonText: 'Register',
     headerValue: 'Sign Up',
@@ -55,9 +59,9 @@ const registerForm = {
             key: '4',
             type: 'password',
             placeholder: 'Password',
-            name: 'password1',
+            name: 'password',
             label: {
-                htmlFor: 'password1',
+                htmlFor: 'password',
                 className: 'login-form__label'
             }
         },
@@ -125,8 +129,18 @@ const postForm = {
 }
 
 const gigForm = {
+    name: 'gigForm',
+    className: 'gig-form',
+    values: {
+        location: '',
+        title: '',
+        description: ''
+    },
+    buttonText: 'Add Gig',
+    headerValue: 'New Gig',
     inputs: [ 
         {
+            key: '9',
             type: 'text',
             placeholder: 'Location',
             name: 'location',
@@ -135,14 +149,16 @@ const gigForm = {
             }
         },
         {
+            key: '10',
             type: 'text',
             placeholder: 'Title',
             name: 'title'
         },
         {
+            key: '11',
             type: 'text',
             placeholder: 'Description',
-            name: 'description'
+            name: 'text'
         }
     ],
     textAreas: null

@@ -20,4 +20,11 @@
     &__main {
         padding: 1rem 2rem;
     }
+
+    &-show {
+        &__image {
+            object-fit: cover;
+        }
+    }
 }
+

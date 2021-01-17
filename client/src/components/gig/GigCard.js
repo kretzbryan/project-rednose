@@ -5,7 +5,7 @@ const GigCard = ({ gig }) => {
     return (
         <div>
             
-        <a href="/gigs/<%= gig._id %>" className="gig-card__anchor">
+        <a href={`/gig/${gig._id}`} className="gig-card__anchor">
         <section className="row card gig-card gig-card-browse">
             <div className="gig-card__thumb-container">
                 <img src="/images/default.png" alt="" className="gig-card__thumb"/>

@@ -22,8 +22,8 @@ const PostHeader = ({id, name, setEditPost, createdAt, toggleForm, deletePost}) 
             </div>
 
             <div className="content-options">
-                <input type="checkbox" className="content-options__checkbox" id='option-toggle<%= post._id %>'/>
-                <label htmlFor="option-toggle<%= post._id %>">
+                <input type="checkbox" className="content-options__checkbox" id={`option-toggle${id}`}/>
+                <label htmlFor={`option-toggle${id}`}>
                     <i className="fa fa-cog options user-options" aria-hidden="true" ></i>
                 </label>
                 <nav className="content-options__nav">

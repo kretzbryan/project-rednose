@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth'
 import React, { useState, Fragment } from 'react';
-import { setLogin, setRegister } from '../../actions/form';
+import { setLogin, setRegister, setAddGig } from '../../actions/form';
 import { useEffect } from 'react';
-import {getUserProfile} from '../../actions/profile'
+import {getUserProfile} from '../../actions/profile';
 
 
-const Header = ({ auth: { isAuthenticated,loading, user}, logout, setLogin, setRegister, getUserProfile }) => {
+
+const Header = ({ auth: { isAuthenticated,loading, user}, logout, setLogin, setRegister, getUserProfile, setAddGig }) => {
     const authLinks = (
         <Fragment>
             <ul className='navbar-nav'>
@@ -20,6 +21,9 @@ const Header = ({ auth: { isAuthenticated,loading, user}, logout, setLogin, setR
                 <li className="nav-item">
                     <a className="nav-link" href="/browse">Browse Profiles</a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link" href='#gigForm' onClick={setAddGig}>Add Gig</a>
+                </li> 
                 <li className="nav-item">
                     <a href="/" className="nav-link" onClick={logout} >Log Out</a>
                 </li>
@@ -72,4 +76,4 @@ Header.propTypes = {
     setRegister: PropTypes.func.isRequired,
     getUserProfile: PropTypes.func.isRequired
 }
-export default connect(mapStateToProps, { logout, setLogin, setRegister, getUserProfile })(Header)
+export default connect(mapStateToProps, { logout, setLogin, setRegister, getUserProfile, setAddGig })(Header)

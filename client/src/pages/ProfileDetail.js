@@ -11,16 +11,17 @@ import {getUserProfile} from '../actions/profile';
 import ProfileCard from '../components/profile/ProfileCard';
 import GigNav1 from '../components/gig/GigNav1';
 import GigNav2 from '../components/gig/GigNav2';
-import { getPosts } from '../actions/post';
+import { getUserPosts } from '../actions/post';
 import Popup from '../components/layout/Popup';
 
 
-const ProfileDetail = ({ getUserProfile, getPosts, auth, profile: { profile, loading }}) => {
+const ProfileDetail = ({ getUserProfile, getUserPosts, auth, profile: { profile, loading }, match}) => {
     let { id } = useParams();
+    console.log('match.params.id', match.params.id.toString())
 
     useEffect(() => {
         getUserProfile(id);
-        getPosts(id);
+        getUserPosts(match.params.id);
     },[])
 
     return (
@@ -45,7 +46,7 @@ ProfileDetail.propTypes = {
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
     getUserProfile: PropTypes.func.isRequired,
-    getPosts: PropTypes.func.isRequired
+    getUserPosts: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -54,4 +55,4 @@ const mapStateToProps = state => ({
     post: state.post
 })
 
-export default connect(mapStateToProps, {getUserProfile, getPosts})(ProfileDetail);
+export default connect(mapStateToProps, {getUserProfile, getUserPosts})(ProfileDetail);

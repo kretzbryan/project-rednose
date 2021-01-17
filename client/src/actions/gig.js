@@ -1,5 +1,5 @@
 import api from '../utils/api';
-import { ADD_GIG, GET_GIGS, GIG_ERROR, DELETE_GIG, EDIT_GIG, EDIT_POST } from './types';
+import { ADD_GIG, GET_GIGS, GIG_ERROR, DELETE_GIG, EDIT_GIG, EDIT_POST, GET_GIG } from './types';
 
 export const addGig = ({ title, location, text }) => async dispatch => {
     const config = {
@@ -23,6 +23,21 @@ export const addGig = ({ title, location, text }) => async dispatch => {
         })
     }
     
+}
+
+export const getGig = (id) => async dispatch => {
+    try {
+        const res = await api.get(`/gig/${id}`);
+        dispatch({
+            type: GET_GIG,
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+            type: GIG_ERROR,
+            payload: err
+        })
+    }
 }
 
 export const getGigs = () => async dispatch => {

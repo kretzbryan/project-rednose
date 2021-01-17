@@ -30,7 +30,7 @@ router.get('/:id', auth, async (req, res ) => {
     try {
         const post = await db.Post.findById(req.params.id);
         console.log(post)
-        res.json(post);
+        res.json({post});
     } catch (err) {
         console.log(err);
     }
@@ -40,7 +40,7 @@ router.get('/:id', auth, async (req, res ) => {
 // Find posts associated with specific User
 router.get('/user/:id', auth, async (req, res) => {
     try {
-        const posts = db.Post.find({user : req.params.id})
+        const posts = await db.Post.find({user : req.params.id})
         .populate({
             path: 'comments',
             populate: {
@@ -109,7 +109,7 @@ router.put('/:postid/comment/:commentid', auth, async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const post = await db.Post.findByIdAndUpdate(req.params.id, req.body, {new: true});
-        res.json({post})
+        res.json(post)
     } catch (err) {
         console.log(err)
     }
@@ -137,6 +137,19 @@ router.delete('/:id', auth, async (req, res) => {
 
     } catch (err) {
         console.log(err)
+    }
+})
+
+router.delete('/:postid/comment/:commentid', async (req, res) => {
+    try {
+        const comment = await db.Comment.findById(req.params.commentid);
+        const post = await db.Post.findById(req.params.postid);
+        await post.comments.remove(comment);
+        await post.save();
+        await comment.remove();
+        res.json({post})
+    } catch (err) {
+        console.log(err);
     }
 })
 

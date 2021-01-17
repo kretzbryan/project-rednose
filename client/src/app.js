@@ -8,6 +8,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
+import Popup from './components/layout/Popup';
+import './firebase/firebase'
 
 
 
@@ -26,6 +28,7 @@ const App = () => {
             <Header />
                     <Routes />
             <Footer />
+            <Popup />
         </div>
     </Provider>
 )}

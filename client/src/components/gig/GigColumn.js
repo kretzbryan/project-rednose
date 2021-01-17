@@ -12,7 +12,6 @@ const GigColumn = ({ getGigs, gig: { gigs, loading } }) => {
     }, [getGigs])
     return (
     <Fragment>
-        <AddGigContainer />
         {!loading && gigs.map( gig => (
             <GigCard key={gig._id} gig={gig} />
         ))}

@@ -8,25 +8,34 @@ router.get('/', async (req, res) => {
         const gigs = await db.Gig.find();
         res.json( gigs )
     } catch (err) {
+        console.log(err)
+    }
+})
 
+router.get('/:id', async (req, res) => {
+    try {
+        const gig = await db.Gig.findById(req.params.id);
+        res.json( gig )
+    } catch (err) {
+        console.log(err)
     }
 })
 
 // Creates gig with author Id, adds gig id to user.Gigs
 router.post('/', auth, async (req, res) => {
     try {
+        const user = await db.User.findById(req.user.id).select('-password')
         const gig = new db.Gig({
             title: req.body.title,
             location: req.body.location,
             text: req.body.text,
-            name: `${req.user.firstName} ${req.user.lastName}`,
-            user: req.user.id
+            name: `${user.firstName} ${user.lastName}`,
+            user: user.id
         })
         await gig.save();
-        const user = await db.User.findById(req.user.id);
         await user.gigs.push(gig._id);
         await user.save();
-        res.json(gig);
+        res.json({gig});
     } catch(err) {
         console.log(err)
         res.status(500).json({ msg: 'An error occured, please try again.' })
