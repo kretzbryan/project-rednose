@@ -1,24 +1,31 @@
-import React from 'react';
-import Header from '../components/layout/Header'
+import React, { useEffect } from 'react';
+import { setLogin } from '../actions/form';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import About from '../components/landing/About';
-import Footer from '../components/layout/Footer';
-import Register from '../components/landing/Register';
-import Login from '../components/landing/Login';
 import Alert from '../components/forms/Alert';
 import Popup from '../components/layout/Popup';
-import bannerImage1 from '../../public/images/andrea-dillon.jpg';
-import bannerImage2 from '../../public/images/david-nguyen-lyra.jpg';
-import bannerImage3 from '../../public/images/joey-moore.jpg';
-import bannerImage4 from '../../public/images/straps-pic.jpg';
-import Carousel from '../components/Carousel';
+import Photo from '../components/landing/Photo';
+import Form from '../components/forms/Form';
 
-const Landing = () => (
-        <div className="landing__container">
-            <Carousel />
-            <About />
-            <Alert />
-            <Popup />
-        </div>
-    )
+const Landing = ({ setLogin }) => {
+	useEffect(() => {
+		setLogin();
+	}, []);
 
-export default Landing;
+	return (
+		<div className='landing__container'>
+			<Form />
+			<Photo />
+			<About />
+			<Alert />
+			<Popup />
+		</div>
+	);
+};
+
+Landing.propTypes = {
+	setLogin: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setLogin })(Landing);

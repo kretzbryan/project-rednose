@@ -7,6 +7,7 @@ $font-xl: 2rem;
 
 // Colors
 
+$background-color: #f5faff;
 $color-white: #fff;
 $color-offwhite: #fbf9fa;
 $color-red: rgb(216, 7, 7);
@@ -20,6 +21,5 @@ $color-grey-dark-3: #696969;
 
 $color-primary: #fd0054;
 
-
-$box-shadow-1: 0 2rem 4rem rgba($color-black, .15);
-$box-shadow-2: 0 1rem 4rem rgba($color-black, .15);
+$box-shadow-1: 0 2rem 4rem rgba($color-black, 0.15);
+$box-shadow-2: 0 1rem 4rem rgba($color-black, 0.15);
