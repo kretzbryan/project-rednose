@@ -105,6 +105,7 @@ export const login = ({ username, password }) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-	dispatch({ type: CLEAR_PROFILE });
+	localStorage.removeItem('token');
 	dispatch({ type: LOGOUT });
+	dispatch({ type: CLEAR_PROFILE });
 };

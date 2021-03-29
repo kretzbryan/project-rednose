@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Routes from './config/routes'
+import Routes from './config/routes';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
@@ -9,30 +9,28 @@ import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
 import Popup from './components/layout/Popup';
-import './firebase/firebase'
-
-
+import './firebase/firebase';
 
 if (localStorage.token) {
-    setAuthToken(localStorage.token)
+	setAuthToken(localStorage.token);
+	// store.dispatch(loadUser());
 }
 
 const App = () => {
-    useEffect(() => {
-        store.dispatch(loadUser());
-    }, [])
+	useEffect(() => {
+		store.dispatch(loadUser());
+	}, []);
 
-    return (
-    <Provider store={store}>
-        <div>
-            <Header />
-                    <Routes />
-            <Footer />
-            <Popup />
-        </div>
-    </Provider>
-)}
-
+	return (
+		<Provider store={store}>
+			<div>
+				<Header />
+				<Routes />
+				<Footer />
+				<Popup />
+			</div>
+		</Provider>
+	);
+};
 
 export default App;
-
