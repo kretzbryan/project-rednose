@@ -14,8 +14,11 @@ const Header = ({
 	getUserProfile,
 	setAddGig,
 }) => {
-	const authLinks = (
+	const authorized = (
 		<Fragment>
+			<h1 className='navbar-brand navbar-brand-authorized' href='#'>
+				Cirque-Connections
+			</h1>
 			<ul className='navbar-nav'>
 				<li className='nav-item'>
 					<a className='nav-link' href='/home'>
@@ -45,19 +48,31 @@ const Header = ({
 						Log Out
 					</a>
 				</li>
+				<li className='nav-item'>
+					<a href='/' className='nav-link'>
+						<img
+							src='/images/default.png'
+							alt='profile thumbnail'
+							className='nav-thumb'
+						/>
+					</a>
+				</li>
 			</ul>
+		</Fragment>
+	);
+
+	const guest = (
+		<Fragment>
+			<h1 className='navbar-brand navbar-brand-guest' href='#'>
+				Cirque-Connections
+			</h1>
 		</Fragment>
 	);
 
 	return (
 		<Fragment>
 			<nav className='navbar'>
-				<h1 className='navbar-brand' href='#'>
-					Cirque-Connections
-				</h1>
-				<div className='navbar-collapse'>
-					{isAuthenticated && !loading ? authLinks : null}
-				</div>
+				{isAuthenticated && !loading ? authorized : guest}
 			</nav>
 		</Fragment>
 	);

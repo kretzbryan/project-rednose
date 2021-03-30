@@ -1,9 +1,43 @@
-.navbar {
-	&-brand {
-		text-align: end;
-		margin-right: 7rem;
-		font-size: 4rem;
-		color: $logo-color;
-		font-family: 'Permanent Marker', cursive;
+.nav {
+	// navbar children
+	&bar {
+		&-nav {
+			position: absolute;
+			display: flex;
+			right: 2rem;
+			top: 0.5rem;
+			list-style: none;
+			font-size: 1.5rem;
+		}
+
+		&-brand {
+			font-size: 4rem;
+			color: $logo-color;
+			font-family: 'Permanent Marker', cursive;
+			&-guest {
+				text-align: end;
+				margin-right: 7rem;
+			}
+
+			&-authorized {
+				margin-left: 7rem;
+			}
+		}
+	}
+
+	// nav children
+	&-thumb {
+		height: 4rem;
+		width: 4rem;
+		border-radius: 100%;
+		object-fit: cover;
+	}
+	&-item {
+		margin: auto 0.25rem;
+	}
+
+	&-link {
+		text-decoration: none;
+		color: $color-blue-dark-1;
 	}
 }
