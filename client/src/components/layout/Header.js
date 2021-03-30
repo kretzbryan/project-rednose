@@ -49,44 +49,14 @@ const Header = ({
 		</Fragment>
 	);
 
-	const guestLinks = (
-		<Fragment>
-			<ul className='navbar-nav'>
-				<li className='nav-item'>
-					<a className='nav-link' href='#login' onClick={() => setLogin()}>
-						Login
-					</a>
-				</li>
-				<li className='nav-item'>
-					<a
-						className='nav-link'
-						href='#register'
-						onClick={() => setRegister()}>
-						Sign Up
-					</a>
-				</li>
-			</ul>
-		</Fragment>
-	);
-
 	return (
 		<Fragment>
-			<nav className='navbar navbar-expand-sm fixed-top navbar-light  nav'>
-				<a className='navbar-brand' href='#'>
-					Rednose
-				</a>
-				<button
-					className='navbar-toggler'
-					type='button'
-					data-toggle='collapse'
-					data-target='#navbarNavDropdown'
-					aria-controls='navbarNavDropdown'
-					aria-expanded='false'
-					aria-label='Toggle navigation'>
-					<span className='navbar-toggler-icon'></span>
-				</button>
-				<div className='collapse navbar-collapse' id='navbarNavDropdown'>
-					{isAuthenticated && !loading ? authLinks : guestLinks}
+			<nav className='navbar'>
+				<h1 className='navbar-brand' href='#'>
+					Cirque-Connections
+				</h1>
+				<div className='navbar-collapse'>
+					{isAuthenticated && !loading ? authLinks : null}
 				</div>
 			</nav>
 		</Fragment>

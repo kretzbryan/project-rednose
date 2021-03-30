@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { setAlert } from './alert';
 import {
 	REGISTER_CONFIRMED,
@@ -14,9 +13,7 @@ import setAuthToken from '../utils/setAuthToken';
 import api from '../utils/api';
 
 export const loadUser = () => async (dispatch) => {
-	console.log('localStorage.token', localStorage.getItem('token'));
 	if (localStorage.token) {
-		console.log('localStorage.token', localStorage.token);
 		setAuthToken(localStorage.token);
 	}
 

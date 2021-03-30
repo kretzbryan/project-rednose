@@ -1,14 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
 
-const LoginForm = ({ login, isAuthenticated }) => {
+const LoginForm = ({ login, isAuthenticated, show, toggle }) => {
 	const [data, setData] = useState({
 		username: '',
 		password: '',
 	});
 
-	onChange = (e) => {
+	const onChange = (e) => {
 		e.preventDefault();
 		setData({
 			...data,
@@ -16,7 +17,8 @@ const LoginForm = ({ login, isAuthenticated }) => {
 		});
 	};
 
-	onSubmit = () => {
+	const onSubmit = (e) => {
+		e.preventDefault();
 		login(data);
 	};
 
@@ -28,9 +30,9 @@ const LoginForm = ({ login, isAuthenticated }) => {
 		<Fragment>
 			<form
 				onSubmit={onSubmit}
-				method='POST'
-				className={`form login-form`}
+				className={`form login-form${toggle()}`}
 				autoComplete='off'>
+				<h2 className='form-title'>Sign In</h2>
 				<div className='login-form__group form__group'>
 					<input
 						type='text'
@@ -55,8 +57,16 @@ const LoginForm = ({ login, isAuthenticated }) => {
 						Password
 					</label>
 				</div>
+				<button type='submit' className={`btn btn-primary login-form__button`}>
+					Login
+				</button>
+				<footer className='auth-footer'>
+					Don't have an account?{' '}
+					<a href='#' onClick={show}>
+						Sign up
+					</a>
+				</footer>
 			</form>
-			;
 		</Fragment>
 	);
 };

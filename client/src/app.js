@@ -13,7 +13,6 @@ import './firebase/firebase';
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
-	// store.dispatch(loadUser());
 }
 
 const App = () => {

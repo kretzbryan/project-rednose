@@ -7,6 +7,9 @@ import Alert from '../components/forms/Alert';
 import Popup from '../components/layout/Popup';
 import Photo from '../components/landing/Photo';
 import Form from '../components/forms/Form';
+import LoginForm from '../components/forms/LoginForm';
+import RegisterForm from '../components/forms/RegisterForm';
+import AuthFormContainer from '../components/forms/AuthFormContainer';
 
 const Landing = ({ setLogin }) => {
 	useEffect(() => {
@@ -15,7 +18,7 @@ const Landing = ({ setLogin }) => {
 
 	return (
 		<div className='landing__container'>
-			<Form />
+			<AuthFormContainer />
 			<Photo />
 			<About />
 			<Alert />

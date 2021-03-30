@@ -11,9 +11,16 @@
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: 1fr 3rem 20rem;
 		grid-template-areas:
-			'auth-form auth-form landing-photo'
+			'form-container form-container landing-photo'
 			'.... about-title ......'
 			'column1 column2 column3';
+	}
+
+	&-form__container {
+		grid-area: form-container;
+		display: flex;
+		position: absolute;
+		height: 45rem;
 	}
 
 	&__photo {
