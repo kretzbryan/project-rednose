@@ -1,6 +1,12 @@
 .nav {
 	// navbar children
 	&bar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 7rem;
+		width: 100vw;
+		box-shadow: 0 2rem 2rem 0 rgba($color-black, 0.15);
 		&-nav {
 			position: absolute;
 			display: flex;

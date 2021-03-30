@@ -5,6 +5,7 @@
 }
 
 html {
+	height: 100vh;
 	font-size: 62.5%;
 
 	@include respond(tab-land) {
@@ -60,7 +61,7 @@ body {
 	display: flex;
 	margin: 0 auto;
 	padding: 0;
-	// background-color: #fbf9fa;
+	background-color: $color-blue-grey;
 	position: absolute;
 	top: 6vh;
 
