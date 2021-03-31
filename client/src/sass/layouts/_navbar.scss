@@ -6,7 +6,9 @@
 		left: 0;
 		height: 7rem;
 		width: 100vw;
-		box-shadow: 0 2rem 2rem 0 rgba($color-black, 0.15);
+		box-shadow: 0 0.5rem 0.5rem 0 rgba($color-black, 0.15);
+		z-index: 100;
+		background-color: $background-color;
 		&-nav {
 			position: absolute;
 			display: flex;

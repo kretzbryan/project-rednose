@@ -4,7 +4,7 @@
 	&-tertiary,
 	&-secondary {
 		overflow: scroll;
-		height: 90vh;
+		height: 93vh;
 
 		&::-webkit-scrollbar {
 			display: none;
@@ -17,6 +17,7 @@
 	}
 
 	&-primary {
+		background-color: $color-blue-grey;
 		padding: 0 3rem;
 		overflow: scroll;
 		width: 50vw;
@@ -30,10 +31,10 @@
 	}
 
 	&-secondary {
-		width: 25vw;
-		background-color: $background-color;
+		width: 20vw;
+		background: linear-gradient(to bottom right, #1e53a8, #6c99e1);
 		box-shadow: 0 2rem 2rem 0 rgba($color-black, 0.15);
-		height: 95vh;
+		height: 93vh;
 		@include respond(gfold-land) {
 			width: 30vw;
 		}
@@ -44,10 +45,11 @@
 	}
 
 	&-tertiary {
-		height: 90vh;
+		height: 93vh;
 		overflow: scroll;
-		width: 25vw;
+		width: 30vw;
 		margin: 0;
+		background-color: $color-blue-grey;
 
 		@include respond(gfold-land) {
 			display: none;

@@ -57,14 +57,12 @@ body {
 /* All pages except the landing page are contained within this container */
 .row.main__container {
 	width: 100vw;
-	height: 89vh;
+	height: 92vh;
 	display: flex;
 	margin: 0 auto;
 	padding: 0;
-	background-color: $color-blue-grey;
-	position: absolute;
-	top: 6vh;
-
+	position: fixed;
+	top: 8vh;
 	&.landing {
 		width: 100vw;
 		height: 90vh;

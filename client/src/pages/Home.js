@@ -14,6 +14,7 @@ import GigNav1 from '../components/gig/GigNav1';
 
 import UserCardMobile from '../components/user/UserCardMobile';
 import UserCard from '../components/user/UserCard';
+import DashboardNav from '../components/user/DashboardNav';
 
 const Home = ({ getUserDashboard, getGigs, getPosts, auth, profile }) => {
 	useEffect(() => {
@@ -25,6 +26,7 @@ const Home = ({ getUserDashboard, getGigs, getPosts, auth, profile }) => {
 		<div className='row main__container'>
 			<section className='column-secondary'>
 				<UserCard />
+				<DashboardNav />
 				<GigNav2 />
 			</section>
 			<section className='column-primary'>

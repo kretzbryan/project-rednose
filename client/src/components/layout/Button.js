@@ -1,11 +1,14 @@
 import React from 'react';
 
-const Button = () => {
-    return (
-        <div>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-    );
+const Button = ({ classNames, buttonText, icon }) => {
+	return (
+		<div>
+			<button type='button' className={`btn ${classNames}`}>
+				{icon} {'  '}
+				{buttonText}
+			</button>
+		</div>
+	);
 };
 
 export default Button;
