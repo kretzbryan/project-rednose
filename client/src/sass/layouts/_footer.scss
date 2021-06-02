@@ -7,11 +7,13 @@ footer.footer {
 	width: 100vw;
 	padding: 15px;
 	height: 5vh;
+	z-index: 7;
 
 	& h5 {
 		font-family: 'Permanent Marker', cursive;
 		position: absolute;
 		bottom: -0.5rem;
 		right: 1vw;
+		z-index: -1;
 	}
 }

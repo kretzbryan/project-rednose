@@ -10,24 +10,41 @@ import MediaCard from '../components/MediaCard';
 import { getUserDashboard } from '../actions/profile';
 import { connect } from 'react-redux';
 import EventCard from '../components/event/EventCard';
+import EventToolBar from '../components/event/EventToolBar';
 const EventBrowse = ({ getUserDashboard }) => {
 	useEffect(() => {
 		getUserDashboard();
 	}, []);
 	return (
-		<Fragment>
-			<div className='row main__container'>
-				<section className='column-secondary'>
-					<UserCard />
-					<DashboardNav />
-					<GigNav2 />
-				</section>
-				<section className='column-primary'>
-					<UserCardMobile />
-					<EventCard />
-				</section>
-			</div>
-		</Fragment>
+		<div className='row main__container'>
+			<section className='column-secondary'>
+				<UserCard />
+				<DashboardNav />
+				<GigNav2 />
+			</section>
+			<section className='event__browse-container'>
+				<UserCardMobile />
+				<EventToolBar />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+				<EventCard />
+			</section>
+		</div>
 	);
 };
 EventBrowse.propTypes = {

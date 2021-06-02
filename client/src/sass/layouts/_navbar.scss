@@ -13,9 +13,11 @@
 			position: absolute;
 			display: flex;
 			right: 2rem;
-			top: 0.5rem;
+			top: 50%;
+			transform: translateY(-75%);
 			list-style: none;
 			font-size: 1.5rem;
+			align-items: center;
 		}
 
 		&-brand {
@@ -24,11 +26,11 @@
 			font-family: 'Permanent Marker', cursive;
 			&-guest {
 				text-align: end;
-				margin-right: 7rem;
+				margin-right: 2rem;
 			}
 
 			&-authorized {
-				margin-left: 7rem;
+				margin-left: 2rem;
 			}
 		}
 	}
@@ -41,7 +43,7 @@
 		object-fit: cover;
 	}
 	&-item {
-		margin: auto 0.25rem;
+		margin: 0 0.25rem;
 	}
 
 	&-link {

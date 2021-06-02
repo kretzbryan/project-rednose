@@ -1,13 +1,12 @@
 @mixin clearfix {
-    &::after {
-        content: '';
-        display: table;
-        clear: both
-    }
-
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
 }
 
-// Media Query Manager 
+// Media Query Manager
 
 /* 
 0 - 600:    Phone
@@ -25,25 +24,40 @@ $breakpoint arguement choices
 1 em = 16px
  */
 
- @mixin respond($breakpoint) {
-
-
-    @if $breakpoint == phone {
-        @media only screen and (max-width: 31.25em) { @content }; // 500px
-    }
-    @if $breakpoint == tab-port-sm {
-        @media only screen and (max-width: 37.5em) { @content }; // 600px
-    }
-    @if $breakpoint == gfold-land {
-        @media only screen and (max-width: 43.75em) { @content }; // 700px
-    }
-    @if $breakpoint == tab-port {
-        @media only screen and (max-width: 56.25em) { @content }; // 900px
-    }
-    @if $breakpoint == tab-land {
-        @media only screen and (max-width: 75em) { @content }; // 1200px
-    }
-    @if $breakpoint == big-desktop {
-        @media only screen and (min-width: 112.5em) { @content} ;// 1800px
-    }
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		@media only screen and (max-width: 31.25em) {
+			@content;
+		} // 500px
+	}
+	@if $breakpoint == tab-port-sm {
+		@media only screen and (max-width: 37.5em) {
+			@content;
+		} // 600px
+	}
+	@if $breakpoint == gfold-land {
+		@media only screen and (max-width: 43.75em) {
+			@content;
+		} // 700px
+	}
+	@if $breakpoint == tab-port {
+		@media only screen and (max-width: 56.25em) {
+			@content;
+		} // 900px
+	}
+	@if $breakpoint == tab-land-sm {
+		@media only screen and (max-width: 62.5em) {
+			@content;
+		} // 1000px
+	}
+	@if $breakpoint == tab-land {
+		@media only screen and (max-width: 75em) {
+			@content;
+		} // 1200px
+	}
+	@if $breakpoint == big-desktop {
+		@media only screen and (min-width: 112.5em) {
+			@content;
+		} // 1800px
+	}
 }

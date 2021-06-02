@@ -8,6 +8,7 @@
 @import './layouts/card';
 @import './layouts/column';
 @import './layouts/footer';
+@import './layouts/input__section';
 
 @import './pages/home';
 @import './pages/landing';
@@ -29,3 +30,5 @@
 @import './components/content-options';
 @import './components/popup';
 @import './components/event__card';
+@import './components/event__browse-container';
+@import './components/event__toolbar';

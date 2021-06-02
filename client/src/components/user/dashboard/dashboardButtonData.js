@@ -1,17 +1,10 @@
 export const dashboardButtonData = [
 	{
-		index: 0,
-		path: null,
-		classNames: 'dashboard-btn',
-		icon: 'fas dashboard-icon fa-bars',
-		buttonText: 'Notifications',
-	},
-	{
 		index: 1,
-		path: null,
+		path: '/dashboard/notifications',
 		classNames: 'dashboard-btn',
 		icon: 'far dashboard-icon fa-bell',
-		buttonText: 'Messages',
+		buttonText: 'Notifications',
 	},
 	{
 		index: 2,
@@ -22,7 +15,7 @@ export const dashboardButtonData = [
 	},
 	{
 		index: 3,
-		path: null,
+		path: '/dashboard/events',
 		classNames: 'dashboard-btn',
 		icon: 'fas dashboard-icon fa-calendar-alt',
 		buttonText: 'Events',
@@ -36,21 +29,21 @@ export const dashboardButtonData = [
 	},
 	{
 		index: 5,
-		path: null,
+		path: '/dashboard/following',
 		classNames: 'dashboard-btn',
 		icon: 'fas dashboard-icon fa-plus-square',
 		buttonText: 'Following',
 	},
 	{
 		index: 6,
-		path: null,
+		path: '/dashboard/connections',
 		classNames: 'dashboard-btn',
 		icon: 'fas dashboard-icon fa-users',
 		buttonText: 'Friends',
 	},
 	{
 		index: 7,
-		path: null,
+		path: '/dashboard/discover',
 		classNames: 'dashboard-btn',
 		icon: 'fas dashboard-icon fa-search',
 		buttonText: 'Discover',

@@ -4,7 +4,7 @@ const db = require('../models');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth');
-const config = require('../config/default');
+const config = require('../../config/default');
 
 router.get('/', auth, async (req, res) => {
 	try {
