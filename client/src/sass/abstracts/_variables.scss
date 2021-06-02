@@ -6,8 +6,13 @@ $font-lg: 1.8rem;
 $font-xl: 2rem;
 
 // Colors
+
+$color-blue-light-1: #6e9ae1;
+$color-blue-light-2: #2a6edb;
+$color-blue-dark-2: #2054a8;
+
 $logo-color: #112e5c;
-$color-blue-dark-1: #2c3e5c;
+$color-blue-dark-1: #37455c;
 $background-color: #f5faff;
 $color-white: #fff;
 $color-offwhite: #fbf9fa;
@@ -24,3 +29,4 @@ $color-primary: #fd0054;
 
 $box-shadow-1: 0 2rem 4rem rgba($color-black, 0.15);
 $box-shadow-2: 0 1rem 4rem rgba($color-black, 0.15);
+$box-shadow-3: 0 1rem 1rem 0 rgba($color-black, 0.15);

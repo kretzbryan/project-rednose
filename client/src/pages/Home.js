@@ -14,7 +14,8 @@ import GigNav1 from '../components/gig/GigNav1';
 
 import UserCardMobile from '../components/user/UserCardMobile';
 import UserCard from '../components/user/UserCard';
-import DashboardNav from '../components/user/DashboardNav';
+import DashboardNav from '../components/user/dashboard/DashboardNav';
+import MediaCard from '../components/MediaCard';
 
 const Home = ({ getUserDashboard, getGigs, getPosts, auth, profile }) => {
 	useEffect(() => {
@@ -34,7 +35,7 @@ const Home = ({ getUserDashboard, getGigs, getPosts, auth, profile }) => {
 				<PostColumn />
 			</section>
 			<section className='column-tertiary'>
-				<GigNav1 />
+				<MediaCard />
 			</section>
 		</div>
 	);
